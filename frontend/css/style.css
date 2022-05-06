@@ -1,0 +1,210 @@
+/*==== Google Font ====*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+/*===== BASE =====*/
+*,::before,::after{
+    box-sizing: border-box;
+}
+
+:root{
+    --blue: #007AFF;
+    --gray: #666666;
+    --white: #F9F9F9;
+    --black: #000000;
+    --font-gray: #8A8A8F;
+    --form-stroke: #C8C7CC;
+    --light-blue: #5AC8FA; 
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-image: url(../images/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(8px);
+    
+    object-fit: cover;
+   
+}
+
+a{
+    text-decoration: none;
+}
+
+body, html{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    display: flex;
+    z-index: 2;
+    width: 100%;
+    background-color: var(--white);
+    box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.25);
+}
+
+.logo{
+    color: var(--blue);
+    margin: 0 2rem 0 5rem;
+}
+
+
+.logo, .nav_item ul li a, title h1{
+    font-weight: 700;
+} 
+
+.nav_item ul li{
+    list-style: none;
+}
+
+
+.nav_item ul li a {
+    text-decoration: none;
+    color: var(--blue);
+}
+
+
+.title h1{
+    color: var(--white);
+    text-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
+    font-size: 3rem;
+    text-align: center;
+    width: 75%;
+    margin: 2rem auto;
+}
+
+.button{
+    text-align: center;
+}
+
+.button ul li{
+    list-style: none;
+    text-decoration: none;
+    margin: 1rem 0;
+}
+
+.button ul li:last-child a{
+    color: var(--font-gray);
+}
+
+.button ul li input[type="file"]{
+    display: none;
+}
+
+.button ul li:first-child{
+    width: 20rem;
+    height: 3rem;
+    margin: 0 auto;
+}
+
+.button ul li label{
+    display: flex;
+    margin: auto;
+    background-color: var(--blue);
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 5px 5px 6px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: all 0.4s ease;
+}
+
+.button ul li label:active{
+    transform: scale(0.9);
+    box-shadow: 5px 5px 6px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+/*==== Input Berita ====*/
+form{
+    margin: .5rem auto;
+    max-width: 50vw;
+    display: flex;
+    flex-direction: column;
+}
+
+form h1{
+    color: var(--white);
+    text-align: center;
+    font-weight: 700;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.input input[type="text"], .input textarea {
+    border: 1px solid var(--form-stroke);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    text-indent: 1rem;
+    padding: 1rem 0;
+    outline: none;
+}
+
+.input textarea{
+    resize: none;
+}
+
+.btn{
+    background: #007AFF;
+    border-radius: 5px;
+    border: none;
+    color: var(--white);
+    text-align: center;
+    margin: 1rem auto;
+    width: 25vw;
+    padding: .5rem 0;
+    font-size:1.5rem;
+    font-weight: 700;
+}
+
+
+/*==== Result ====*/
+h1{
+    color: var(--font-gray);
+    text-align: center;
+}
+
+.container {
+    justify-content: center;
+    display: flex;
+    column-gap: 5rem;
+}
+
+.ringkasan{
+    display: flex;
+    flex-direction: column;
+}
+
+.ringkasan textarea{
+    resize: none;
+    border: 1px solid var(--form-stroke);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    text-indent: 1rem;
+    padding: 1rem 0;
+    outline: none;
+}
+
+.ringkasan label{
+    color: var(--font-gray);
+    font-size: 1.5em;
+    font-weight: 700;
+}
