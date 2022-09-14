@@ -7,16 +7,30 @@
       "negeri",
       "sipil",
       "pns",
-      "kementerian",
+      "menteri",
       "negeri",
       "kemendagri",
-      "menggelar",
+      "gelar",
       "halalbihalal",
       "idulfitri",
       "hijriah",
       "metaverse",
       "jumat"
-    ]
+    ],
+    "time_freq_normalized": {
+      "pegawai": 0.07692307692307693,
+      "negeri": 0.07692307692307693,
+      "sipil": 0.07692307692307693,
+      "pns": 0.07692307692307693,
+      "menteri": 0.07692307692307693,
+      "kemendagri": 0.07692307692307693,
+      "gelar": 0.07692307692307693,
+      "halalbihalal": 0.07692307692307693,
+      "idulfitri": 0.07692307692307693,
+      "hijriah": 0.07692307692307693,
+      "metaverse": 0.07692307692307693,
+      "jumat": 0.07692307692307693
+    }
   },
   "kalimat 2": {
     "kalimat": " Direktur Jenderal Otonomi Daerah (Ditjen Otda) Kemendagri Akmal Malik mengatakan bahwa halalbihalal virtual itu lebih efisien",
@@ -31,42 +45,74 @@
       "kemendagri",
       "akmal",
       "malik",
-      "mengatakan",
+      "kata",
       "bahwa",
       "halalbihalal",
       "virtual",
       "itu",
       "lebih",
       "efisien"
-    ]
+    ],
+    "time_freq_normalized": {
+      "direktur": 0.0625,
+      "jenderal": 0.0625,
+      "otonomi": 0.0625,
+      "daerah": 0.0625,
+      "ditjen": 0.0625,
+      "otda": 0.0625,
+      "kemendagri": 0.0625,
+      "akmal": 0.0625,
+      "malik": 0.0625,
+      "kata": 0.0625,
+      "bahwa": 0.0625,
+      "halalbihalal": 0.0625,
+      "virtual": 0.0625,
+      "itu": 0.0625,
+      "lebih": 0.0625,
+      "efisien": 0.0625
+    }
   },
   "kalimat 3": {
     "kalimat": " Dia mengklaim gelaran di metaverse ini pun dihadiri banyak pejabat dan PNS",
     "lower_punct": " dia mengklaim gelaran di metaverse ini pun dihadiri banyak pejabat dan pns",
     "token": [
       "dia",
-      "mengklaim",
-      "gelaran",
+      "klaim",
+      "gelar",
       "di",
       "metaverse",
       "ini",
       "pun",
-      "dihadiri",
+      "hadir",
       "banyak",
-      "pejabat",
+      "jabat",
       "dan",
       "pns"
-    ]
+    ],
+    "time_freq_normalized": {
+      "dia": 0.08333333333333333,
+      "klaim": 0.08333333333333333,
+      "gelar": 0.08333333333333333,
+      "di": 0.08333333333333333,
+      "metaverse": 0.08333333333333333,
+      "ini": 0.08333333333333333,
+      "pun": 0.08333333333333333,
+      "hadir": 0.08333333333333333,
+      "banyak": 0.08333333333333333,
+      "jabat": 0.08333333333333333,
+      "dan": 0.08333333333333333,
+      "pns": 0.08333333333333333
+    }
   },
   "kalimat 4": {
     "kalimat": " \"Melalui pemanfaatan teknologi metaverse, pelaksanaan halalbihalal dapat lebih efisien baik dari segi waktu maupun tempat,\" kata Akmal dalam keterangan tertulis",
     "lower_punct": " melalui pemanfaatan teknologi metaverse pelaksanaan halalbihalal dapat lebih efisien baik dari segi waktu maupun tempat kata akmal dalam keterangan tertulis",
     "token": [
-      "melalui",
-      "pemanfaatan",
+      "lalu",
+      "manfaat",
       "teknologi",
       "metaverse",
-      "pelaksanaan",
+      "laksana",
       "halalbihalal",
       "dapat",
       "lebih",
@@ -80,9 +126,31 @@
       "kata",
       "akmal",
       "dalam",
-      "keterangan",
-      "tertulis"
-    ]
+      "terang",
+      "tulis"
+    ],
+    "time_freq_normalized": {
+      "lalu": 0.05,
+      "manfaat": 0.05,
+      "teknologi": 0.05,
+      "metaverse": 0.05,
+      "laksana": 0.05,
+      "halalbihalal": 0.05,
+      "dapat": 0.05,
+      "lebih": 0.05,
+      "efisien": 0.05,
+      "baik": 0.05,
+      "dari": 0.05,
+      "segi": 0.05,
+      "waktu": 0.05,
+      "maupun": 0.05,
+      "tempat": 0.05,
+      "kata": 0.05,
+      "akmal": 0.05,
+      "dalam": 0.05,
+      "terang": 0.05,
+      "tulis": 0.05
+    }
   },
   "kalimat 5": {
     "kalimat": " Dalam foto yang dibagikan Pusat Penerangan Kemendagri, para PNS terlihat menggunakan kacamata virtual reality (VR) untuk menghadiri acara itu",
@@ -91,23 +159,44 @@
       "dalam",
       "foto",
       "yang",
-      "dibagikan",
+      "bagi",
       "pusat",
-      "penerangan",
+      "terang",
       "kemendagri",
       "para",
       "pns",
-      "terlihat",
-      "menggunakan",
+      "lihat",
+      "guna",
       "kacamata",
       "virtual",
       "reality",
       "vr",
       "untuk",
-      "menghadiri",
+      "hadir",
       "acara",
       "itu"
-    ]
+    ],
+    "time_freq_normalized": {
+      "dalam": 0.05263157894736842,
+      "foto": 0.05263157894736842,
+      "yang": 0.05263157894736842,
+      "bagi": 0.05263157894736842,
+      "pusat": 0.05263157894736842,
+      "terang": 0.05263157894736842,
+      "kemendagri": 0.05263157894736842,
+      "para": 0.05263157894736842,
+      "pns": 0.05263157894736842,
+      "lihat": 0.05263157894736842,
+      "guna": 0.05263157894736842,
+      "kacamata": 0.05263157894736842,
+      "virtual": 0.05263157894736842,
+      "reality": 0.05263157894736842,
+      "vr": 0.05263157894736842,
+      "untuk": 0.05263157894736842,
+      "hadir": 0.05263157894736842,
+      "acara": 0.05263157894736842,
+      "itu": 0.05263157894736842
+    }
   },
   "kalimat 6": {
     "kalimat": " Mereka hadir dalam ruangan maya dalam bentuk avatar",
@@ -116,44 +205,77 @@
       "mereka",
       "hadir",
       "dalam",
-      "ruangan",
+      "ruang",
       "maya",
       "dalam",
       "bentuk",
       "avatar"
-    ]
+    ],
+    "time_freq_normalized": {
+      "mereka": 0.125,
+      "hadir": 0.125,
+      "dalam": 0.125,
+      "ruang": 0.125,
+      "maya": 0.125,
+      "bentuk": 0.125,
+      "avatar": 0.125
+    }
   },
   "kalimat 7": {
     "kalimat": " Ruangan maya itu terlihat seperti amphitheater dengan panggung di tengah",
     "lower_punct": " ruangan maya itu terlihat seperti amphitheater dengan panggung di tengah",
     "token": [
-      "ruangan",
+      "ruang",
       "maya",
       "itu",
-      "terlihat",
+      "lihat",
       "seperti",
       "amphitheater",
       "dengan",
       "panggung",
       "di",
       "tengah"
-    ]
+    ],
+    "time_freq_normalized": {
+      "ruang": 0.1,
+      "maya": 0.1,
+      "itu": 0.1,
+      "lihat": 0.1,
+      "seperti": 0.1,
+      "amphitheater": 0.1,
+      "dengan": 0.1,
+      "panggung": 0.1,
+      "di": 0.1,
+      "tengah": 0.1
+    }
   },
   "kalimat 8": {
     "kalimat": " Terlihat pula baliho ucapan selamat Idulfitri lengkap dengan foto Akmal",
     "lower_punct": " terlihat pula baliho ucapan selamat idulfitri lengkap dengan foto akmal",
     "token": [
-      "terlihat",
+      "lihat",
       "pula",
       "baliho",
-      "ucapan",
+      "ucap",
       "selamat",
       "idulfitri",
       "lengkap",
       "dengan",
       "foto",
       "akmal"
-    ]
+    ],
+    "time_freq_normalized": {
+      "lihat": 0.1,
+      "pula": 0.1,
+      "baliho": 0.1,
+      "ucap": 0.1,
+      "selamat": 0.1,
+      "idulfitri": 0.1,
+      "lengkap": 0.1,
+      "dengan": 0.1,
+      "foto": 0.1,
+      "akmal": 0.1
+    }
   },
   "kalimat 9": {
     "kalimat": " Halalbihalal itu juga disertai tausiah oleh ustaz Das'ad Latif",
@@ -162,50 +284,84 @@
       "halalbihalal",
       "itu",
       "juga",
-      "disertai",
+      "serta",
       "tausiah",
       "oleh",
       "ustaz",
       "dasad",
       "latif"
-    ]
+    ],
+    "time_freq_normalized": {
+      "halalbihalal": 0.1111111111111111,
+      "itu": 0.1111111111111111,
+      "juga": 0.1111111111111111,
+      "serta": 0.1111111111111111,
+      "tausiah": 0.1111111111111111,
+      "oleh": 0.1111111111111111,
+      "ustaz": 0.1111111111111111,
+      "dasad": 0.1111111111111111,
+      "latif": 0.1111111111111111
+    }
   },
   "kalimat 10": {
     "kalimat": " Dia berceramah melalui avatar yang hadir dalam ruangan maya tersebut",
     "lower_punct": " dia berceramah melalui avatar yang hadir dalam ruangan maya tersebut",
     "token": [
       "dia",
-      "berceramah",
-      "melalui",
+      "ceramah",
+      "lalu",
       "avatar",
       "yang",
       "hadir",
       "dalam",
-      "ruangan",
+      "ruang",
       "maya",
-      "tersebut"
-    ]
+      "sebut"
+    ],
+    "time_freq_normalized": {
+      "dia": 0.1,
+      "ceramah": 0.1,
+      "lalu": 0.1,
+      "avatar": 0.1,
+      "yang": 0.1,
+      "hadir": 0.1,
+      "dalam": 0.1,
+      "ruang": 0.1,
+      "maya": 0.1,
+      "sebut": 0.1
+    }
   },
   "kalimat 11": {
     "kalimat": " \"Pertama kalinya saya bertausiah di hadapan jemaah melalui metaverse",
     "lower_punct": " pertama kalinya saya bertausiah di hadapan jemaah melalui metaverse",
     "token": [
       "pertama",
-      "kalinya",
+      "kali",
       "saya",
       "bertausiah",
       "di",
-      "hadapan",
+      "hadap",
       "jemaah",
-      "melalui",
+      "lalu",
       "metaverse"
-    ]
+    ],
+    "time_freq_normalized": {
+      "pertama": 0.1111111111111111,
+      "kali": 0.1111111111111111,
+      "saya": 0.1111111111111111,
+      "bertausiah": 0.1111111111111111,
+      "di": 0.1111111111111111,
+      "hadap": 0.1111111111111111,
+      "jemaah": 0.1111111111111111,
+      "lalu": 0.1111111111111111,
+      "metaverse": 0.1111111111111111
+    }
   },
   "kalimat 12": {
     "kalimat": " Terlihat avatar diri saya dan para jemaah dalam ruangan metaverse yang disediakan,\" ucap Da'sad",
     "lower_punct": " terlihat avatar diri saya dan para jemaah dalam ruangan metaverse yang disediakan ucap dasad",
     "token": [
-      "terlihat",
+      "lihat",
       "avatar",
       "diri",
       "saya",
@@ -213,48 +369,91 @@
       "para",
       "jemaah",
       "dalam",
-      "ruangan",
+      "ruang",
       "metaverse",
       "yang",
-      "disediakan",
+      "sedia",
       "ucap",
       "dasad"
-    ]
+    ],
+    "time_freq_normalized": {
+      "lihat": 0.07142857142857142,
+      "avatar": 0.07142857142857142,
+      "diri": 0.07142857142857142,
+      "saya": 0.07142857142857142,
+      "dan": 0.07142857142857142,
+      "para": 0.07142857142857142,
+      "jemaah": 0.07142857142857142,
+      "dalam": 0.07142857142857142,
+      "ruang": 0.07142857142857142,
+      "metaverse": 0.07142857142857142,
+      "yang": 0.07142857142857142,
+      "sedia": 0.07142857142857142,
+      "ucap": 0.07142857142857142,
+      "dasad": 0.07142857142857142
+    }
   },
   "kalimat 13": {
     "kalimat": " Sebelumnya, Ditjen Otda Kemendagri sudah menerapkan sistem metaverse dalam layanan konsultasi pemda",
     "lower_punct": " sebelumnya ditjen otda kemendagri sudah menerapkan sistem metaverse dalam layanan konsultasi pemda",
     "token": [
-      "sebelumnya",
+      "belum",
       "ditjen",
       "otda",
       "kemendagri",
       "sudah",
-      "menerapkan",
+      "terap",
       "sistem",
       "metaverse",
       "dalam",
-      "layanan",
+      "layan",
       "konsultasi",
       "pemda"
-    ]
+    ],
+    "time_freq_normalized": {
+      "belum": 0.08333333333333333,
+      "ditjen": 0.08333333333333333,
+      "otda": 0.08333333333333333,
+      "kemendagri": 0.08333333333333333,
+      "sudah": 0.08333333333333333,
+      "terap": 0.08333333333333333,
+      "sistem": 0.08333333333333333,
+      "metaverse": 0.08333333333333333,
+      "dalam": 0.08333333333333333,
+      "layan": 0.08333333333333333,
+      "konsultasi": 0.08333333333333333,
+      "pemda": 0.08333333333333333
+    }
   },
   "kalimat 14": {
     "kalimat": " Mereka mempersilakan pejabat daerah berkonsultasi dengan pejabat pusat melalui aplikasi Kovi Otda",
     "lower_punct": " mereka mempersilakan pejabat daerah berkonsultasi dengan pejabat pusat melalui aplikasi kovi otda",
     "token": [
       "mereka",
-      "mempersilakan",
-      "pejabat",
+      "sila",
+      "jabat",
       "daerah",
-      "berkonsultasi",
+      "konsultasi",
       "dengan",
-      "pejabat",
+      "jabat",
       "pusat",
-      "melalui",
+      "lalu",
       "aplikasi",
       "kovi",
       "otda"
-    ]
+    ],
+    "time_freq_normalized": {
+      "mereka": 0.08333333333333333,
+      "sila": 0.08333333333333333,
+      "jabat": 0.08333333333333333,
+      "daerah": 0.08333333333333333,
+      "konsultasi": 0.08333333333333333,
+      "dengan": 0.08333333333333333,
+      "pusat": 0.08333333333333333,
+      "lalu": 0.08333333333333333,
+      "aplikasi": 0.08333333333333333,
+      "kovi": 0.08333333333333333,
+      "otda": 0.08333333333333333
+    }
   }
 }
