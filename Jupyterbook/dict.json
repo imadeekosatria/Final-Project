@@ -240,6 +240,10 @@
       "kovi": 0.0
     },
     "Sum TF-IDF": 1.9901689294325104,
+    "title_similarity": 0.42857142857142855,
+    "length": 1.0,
+    "Loc": 0.9285714285714286,
+    "ISCORE": 4.347311786575368,
     "cosine_similarity": {
       "kalimat 2": 0.048020346743380016,
       "kalimat 3": 0.12350496353082138,
@@ -527,6 +531,10 @@
       "kovi": 0.0
     },
     "Sum TF-IDF": 1.9818704081117857,
+    "title_similarity": 0.14285714285714285,
+    "length": 0.8,
+    "Loc": 0.8571428571428572,
+    "ISCORE": 3.7818704081117858,
     "cosine_similarity": {
       "kalimat 1": 0.048020346743380016,
       "kalimat 3": 0.0,
@@ -809,6 +817,10 @@
       "kovi": 0.0
     },
     "Sum TF-IDF": 1.9262796431125828,
+    "title_similarity": 0.2857142857142857,
+    "length": 0.6,
+    "Loc": 0.7857142857142857,
+    "ISCORE": 3.597708214541154,
     "cosine_similarity": {
       "kalimat 1": 0.12350496353082138,
       "kalimat 2": 0.0,
@@ -1103,6 +1115,10 @@
       "kovi": 0.0
     },
     "Sum TF-IDF": 2.119984362043707,
+    "title_similarity": 0.14285714285714285,
+    "length": 1.0,
+    "Loc": 0.7142857142857143,
+    "ISCORE": 3.9771272191865643,
     "cosine_similarity": {
       "kalimat 1": 0.028864682268546205,
       "kalimat 2": 0.18839869680274518,
@@ -1397,6 +1413,10 @@
       "kovi": 0.0
     },
     "Sum TF-IDF": 1.946739009948373,
+    "title_similarity": 0.0,
+    "length": 0.95,
+    "Loc": 0.6428571428571428,
+    "ISCORE": 3.5395961528055158,
     "cosine_similarity": {
       "kalimat 1": 0.05547664877521025,
       "kalimat 2": 0.09507904337092639,
@@ -1677,6 +1697,10 @@
       "kovi": 0.0
     },
     "Sum TF-IDF": 1.4447097323344371,
+    "title_similarity": 0.0,
+    "length": 0.4,
+    "Loc": 0.5714285714285714,
+    "ISCORE": 2.4161383037630086,
     "cosine_similarity": {
       "kalimat 1": 0.0,
       "kalimat 2": 0.0,
@@ -1956,6 +1980,10 @@
       "kovi": 0.0
     },
     "Sum TF-IDF": 1.8935853346788587,
+    "title_similarity": 0.14285714285714285,
+    "length": 0.5,
+    "Loc": 0.5,
+    "ISCORE": 3.0364424775360015,
     "cosine_similarity": {
       "kalimat 1": 0.0,
       "kalimat 2": 0.030436473938993,
@@ -2237,6 +2265,10 @@
       "kovi": 0.0
     },
     "Sum TF-IDF": 2.0727612816016645,
+    "title_similarity": 0.0,
+    "length": 0.5,
+    "Loc": 0.4285714285714286,
+    "ISCORE": 3.0013327101730933,
     "cosine_similarity": {
       "kalimat 1": 0.0702690377320369,
       "kalimat 2": 0.04296352886856283,
@@ -2513,6 +2545,10 @@
       "kovi": 0.0
     },
     "Sum TF-IDF": 2.2539755626375104,
+    "title_similarity": 0.0,
+    "length": 0.45,
+    "Loc": 0.3571428571428571,
+    "ISCORE": 3.0611184197803674,
     "cosine_similarity": {
       "kalimat 1": 0.028157815417287565,
       "kalimat 2": 0.05494371769115683,
@@ -2790,6 +2826,10 @@
       "kovi": 0.0
     },
     "Sum TF-IDF": 1.6296796017173327,
+    "title_similarity": 0.0,
+    "length": 0.5,
+    "Loc": 0.2857142857142857,
+    "ISCORE": 2.4153938874316183,
     "cosine_similarity": {
       "kalimat 1": 0.0,
       "kalimat 2": 0.0,
@@ -3069,6 +3109,10 @@
       "kovi": 0.0
     },
     "Sum TF-IDF": 2.009839498489042,
+    "title_similarity": 0.2857142857142857,
+    "length": 0.45,
+    "Loc": 0.2142857142857143,
+    "ISCORE": 2.959839498489042,
     "cosine_similarity": {
       "kalimat 1": 0.014198025521751612,
       "kalimat 2": 0.0,
@@ -3353,6 +3397,10 @@
       "kovi": 0.0
     },
     "Sum TF-IDF": 1.7200311866710416,
+    "title_similarity": 0.14285714285714285,
+    "length": 0.7,
+    "Loc": 0.1428571428571429,
+    "ISCORE": 2.705745472385327,
     "cosine_similarity": {
       "kalimat 1": 0.01329374505495279,
       "kalimat 2": 0.0,
@@ -3638,6 +3686,10 @@
       "kovi": 0.0
     },
     "Sum TF-IDF": 2.0049847771826537,
+    "title_similarity": 0.14285714285714285,
+    "length": 0.6,
+    "Loc": 0.0714285714285714,
+    "ISCORE": 2.8192704914683677,
     "cosine_similarity": {
       "kalimat 1": 0.03879788456855814,
       "kalimat 2": 0.1279054878848954,
@@ -3921,6 +3973,10 @@
       "kovi": 0.21992144413460485
     },
     "Sum TF-IDF": 1.9262796431125828,
+    "title_similarity": 0.0,
+    "length": 0.6,
+    "Loc": 0.0,
+    "ISCORE": 2.526279643112583,
     "cosine_similarity": {
       "kalimat 1": 0.0,
       "kalimat 2": 0.10451003099557597,
