@@ -1,210 +1,510 @@
 /*==== Google Font ====*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 /*===== BASE =====*/
 *,::before,::after{
     box-sizing: border-box;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    /* outline: 0;
+    border: 0; */
+}
+
 :root{
-    --blue: #007AFF;
-    --gray: #666666;
-    --white: #F9F9F9;
-    --black: #000000;
-    --font-gray: #8A8A8F;
-    --form-stroke: #C8C7CC;
-    --light-blue: #5AC8FA; 
+    --font-white: #F7FBFC;
+    --font: #363949;
+    --gray-font: #DDDDDD;
+    --color-accent: #769FCD;
+    --background: #F6F6F6;
+
+    --button-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    --button-radius: 10px;
+    --border-radius-field: 5px;
+    --border-field: 2px solid var(--color-accent);
+    --background-field: #fff;
 }
 
 html{
     scroll-behavior: smooth;
 }
 
-body{
-    font-family: 'Poppins', sans-serif;
-    background-image: url(../images/background.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    backdrop-filter: blur(8px);
-    
-    object-fit: cover;
-   
-}
-
 a{
     text-decoration: none;
+    color: var(--font);
 }
 
-body, html{
-    height: 100%;
-    margin: 0;
-    padding: 0;
+body{
+    /* width: 100vw; */
+    /* height: 100vh; */
+    background-color: var(--background);
+    color: var(--font);
+    font-family: 'Poppins', sans-serif;
 }
 
-nav{
-    display: flex;
-    z-index: 2;
+.container {
+    position: relative;
     width: 100%;
-    background-color: var(--white);
-    box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.25);
+    padding: 0 4rem;
+    z-index: 2;
+}
+.container > nav{
+    /* position: absolute; */
+    display: flex;
+    width: 100%;
+    margin: 1rem 0;
+    justify-content: space-between;
 }
 
-.logo{
-    color: var(--blue);
-    margin: 0 2rem 0 5rem;
+.container nav .logo a h2{
+    font-weight: 500;
+    color: var(--color-accent);
 }
 
-
-.logo, .nav_item ul li a, title h1{
-    font-weight: 700;
-} 
-
-.nav_item ul li{
+.container nav .nav_item ul{
     list-style: none;
+    display: flex;
+    column-gap: 1.5rem;
+    justify-content: space-between;
+    font-weight: 500;
 }
 
-
-.nav_item ul li a {
-    text-decoration: none;
-    color: var(--blue);
+.container nav .nav_item ul li a:hover{
+    color: var(--color-accent);
 }
 
+.active{
+    border-bottom: 2px solid var(--color-accent);
+}
 
-.title h1{
-    color: var(--white);
-    text-shadow: 3px 2px 4px rgba(0, 0, 0, 0.25);
-    font-size: 3rem;
-    text-align: center;
-    width: 75%;
+section#home form input[type="file"]::-webkit-file-upload-button{
+    display: none;
+}
+.switch_display{
+    display: none !important;
+}
+section#home form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section#home form .wrapper{
+    position: relative;
+    width: 46.75rem;
+    height: 3.75rem;
     margin: 2rem auto;
 }
 
-.button{
-    text-align: center;
+section#home form .wrapper input[type="file"]{
+    z-index: 1;
+    border: 2px solid var(--color-accent);
+    width: 46.75rem;
+    height: 3.75rem;
+    position: relative;
+    font-size: 1.2rem;
+    padding: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--font);
+    font-weight: 400;
+    border-radius: var(--border-radius-field) var(--button-radius) var(--button-radius) var(--border-radius-field);
 }
-
-.button ul li{
-    list-style: none;
-    text-decoration: none;
-    margin: 1rem 0;
+section#home form .wrapper label:hover{
+    background-color: #a8ccf5;
 }
-
-.button ul li:last-child a{
-    color: var(--font-gray);
-}
-
-.button ul li input[type="file"]{
-    display: none;
-}
-
-.button ul li:first-child{
-    width: 20rem;
-    height: 3rem;
-    margin: 0 auto;
-}
-
-.button ul li label{
-    display: flex;
-    margin: auto;
-    background-color: var(--blue);
-    width: 100%;
+section#home form .wrapper label{
+    z-index: 2;
+    background-color: var(--color-accent);
+    position: absolute;
+    top: 0;
+    right: 0;
     height: 100%;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    box-shadow: 5px 5px 6px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 40px;
-    cursor: pointer;
     border: none;
-    outline: none;
-    transition: all 0.4s ease;
+    padding: 1rem;
+    color: var(--font-white);
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: var(--button-radius);
+    cursor: pointer;
+}
+section#home form#base button:hover, section#home form#modal .modal > div > button:hover{
+    background-color: #a8ccf5;
+}
+section#home form button{
+    width: 12.5rem;
+    height: 3.75rem;
+    border-radius: var(--button-radius);
+    background-color: var(--color-accent);
+    color: var(--font-white);
+    font-size: 1.5rem;
+    border: none;
+    box-shadow: var(--button-shadow);
+    text-align: center;
+    cursor: pointer;
 }
 
-.button ul li label:active{
-    transform: scale(0.9);
-    box-shadow: 5px 5px 6px 4px rgba(0, 0, 0, 0.25);
+section#home form > p:hover{
+    color: var(--color-accent);
+}
+section#home form > p{
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 1.25rem;
+    margin-top: .5rem;
+}
+
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+footer img{
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
 }
 
 
-/*==== Input Berita ====*/
-form{
-    margin: .5rem auto;
-    max-width: 50vw;
+section#home form#modal{
+    animation-name: popup;
+    animation-duration: 300ms;
+    
+}
+@keyframes popup{
+    from{
+        z-index: 2;
+        transform: translateY(50px);
+    }
+    to{
+        transform: translateY(0px);
+        z-index: 2;
+    }
+}
+
+section#home form#modal .modal{
+    position: relative;
+    /* display: none; */
+    width: 50rem;
+    height: 30.5625rem;
+    background-color: var(--background);
+    box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.25);
+    z-index: 2;
     display: flex;
     flex-direction: column;
+    row-gap: .5rem;
+    align-items: center;
+    border-radius: var(--border-radius-field);
+}
+section#home form#modal .modal span:hover{
+    color: var(--color-accent);
+}
+section#home form#modal .modal span{
+    position: absolute;
+    right: .5rem;
+    top: .5rem;
+    cursor: pointer;
 }
 
-form h1{
-    color: var(--white);
-    text-align: center;
-    font-weight: 700;
+section#home form#modal .modal div{
+    display: grid;
+    grid-template-columns: 1fr 6fr;
 }
 
-.input{
+section#home form#modal .modal div:nth-child(2){
+    margin: 3.875rem auto 1rem auto;
+}
+
+section#home form#modal .modal div label{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+section#home form#modal .modal > div:nth-child(2) input{
+    width: 30.125rem;
+    height: 1.875rem;
+    text-align: start;
+}
+
+section#home form#modal .modal > div:nth-child(3) textarea{
+    width: 30.125rem;
+    height: 15.375rem;
+    padding: .5rem;
+}
+section#home form#modal .modal > div input:focus, section#home form#modal .modal > div:nth-child(3) textarea{
+    outline: none;
+    resize: none;
+}
+section#home form#modal .modal > div input{
+    border: 1px solid var(--color-accent);
+    border-radius: var(--border-radius-field);
+    text-indent: .5rem;
+}
+
+section#home form#modal .modal div:last-child{
+    width: 35.1456rem;
+    display: flex;
+    justify-content: end;
+}
+
+section#home form#modal .modal div:last-child button{
+    width: 8rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+
+/*==== Overview ====*/
+
+section#overview{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2;
+}
+
+section#overview .wrapper form{
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1.5fr .5fr;
+    column-gap: 1rem;
+    position: relative;
+}
+
+section#overview .wrapper form div:first-child{
+    position: relative;
+}
+
+section#overview .wrapper form div{
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
 }
 
-.input input[type="text"], .input textarea {
-    border: 1px solid var(--form-stroke);
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    text-indent: 1rem;
-    padding: 1rem 0;
-    outline: none;
+section#overview .wrapper form div:first-child div{
+    display: grid;
+    grid-template-columns: 1fr 6fr;
 }
 
-.input textarea{
+section#overview .wrapper form div label{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+section#overview .wrapper form div:first-child input {
+    width: 42.5rem;
+    height: 2rem;
+    text-indent: .5rem;
+}
+
+section#overview .wrapper form div:nth-child(2) textarea {
+    width: 42.5rem;
+    height: 18.75rem;
     resize: none;
+    /* text-indent: .5rem; */
+    padding: .5rem;
 }
 
-.btn{
-    background: #007AFF;
-    border-radius: 5px;
-    border: none;
-    color: var(--white);
-    text-align: center;
-    margin: 1rem auto;
-    width: 25vw;
-    padding: .5rem 0;
-    font-size:1.5rem;
+section#overview .wrapper form div:first-child input,section#overview .wrapper form div:nth-child(2) textarea {
+    outline: none;
+    border: 1px solid var(--color-accent);
+    border-radius: var(--border-radius-field);
+} 
+
+section#overview .wrapper form .popup_menu .link_advance{
+    width: 12.5rem;
+    height: 4.375rem;
+    line-height: .5rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--font);
+    background-color: var(--background-field);
+    border: 1px solid var(--color-accent);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius-field);
+    /* transition: all ease-out 1s; */
+}
+
+section#overview .wrapper form .popup_menu .link_advance span#advance{
+    color: var(--color-accent);
     font-weight: 700;
+    cursor: pointer;
 }
 
+section#overview .wrapper form .popup_menu .link_advance span#advance:hover{
+    color: var(--font);
+}
+
+section#overview .wrapper form .popup_menu .advance_menu{
+    background-color: var(--background-field);
+    border: 1px solid var(--color-accent);
+    width: 25rem;
+    height: 25rem;
+    border-radius: var(--border-radius-field);
+    position: relative;
+    row-gap: 0;
+    /* transition: all ease-out 1s; */
+}
+
+section#overview .wrapper form .popup_menu .advance_menu span#close{
+    position: absolute;
+    right: .5rem;
+    top: .5rem;
+    cursor: pointer;
+}
+
+section#overview .wrapper form .popup_menu .advance_menu span:hover{
+    color: var(--color-accent);
+}
+
+section#overview .wrapper form .popup_menu .advance_menu .basic h3,
+section#overview .wrapper form .popup_menu .advance_menu .pso h3,
+section#overview .wrapper form .popup_menu .advance_menu .mode h3{
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+section#overview .wrapper form .popup_menu .advance_menu > div{
+    row-gap: .5rem;
+    margin: .5rem 1rem;
+}
+
+section#overview .wrapper form .popup_menu .advance_menu > .basic div:last-child{
+   display: grid;
+   grid-template-columns: 5rem 0rem 1fr;
+   column-gap: 3rem;
+}
+
+section#overview .wrapper form .popup_menu .advance_menu .basic div:last-child > span:hover{
+    color: var(--font)!important;
+}
+
+section#overview .wrapper form .popup_menu .advance_menu div div{
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    align-items: center;
+    column-gap: 3rem;
+}
+
+section#overview .wrapper form .popup_menu .advance_menu div div label{
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+section#overview .wrapper form .popup_menu .advance_menu div div input{
+    width: 2.5rem;
+}
+
+section#overview .wrapper form .popup_menu .advance_menu > .pso div:last-child{
+    display: grid;
+   grid-template-columns: 5rem 0rem 1fr;
+   column-gap: 3rem;
+}
+
+section#overview .wrapper form .popup_menu .advance_menu > .pso div:last-child > span{
+    color: #EE2F2F;
+    font-size: .87rem;
+}
+
+section#overview .wrapper form .popup_menu .advance_menu > .mode div{
+    display: flex;
+    flex-direction: row;
+    column-gap: .5rem;
+}
+
+section#overview .wrapper form .popup_menu .advance_menu button{
+    width: 4.375rem;
+    height: 1.5625rem;
+    background-color: var(--color-accent);
+    color: var(--font-white);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: none;
+    border-radius: var(--border-radius-field);
+    margin-left: auto;
+    margin-right: 2rem;
+    cursor: pointer;
+}
+
+section#overview .wrapper form div:first-child button{
+    background-color: var(--color-accent);
+    color: var(--font-white);
+    font-size: 1.5rem;
+    font-weight: 600;
+    width: 10rem;
+    height: 3rem;
+    border-radius: var(--button-radius);
+    border: none;
+    position: absolute;
+    right: 0;
+    bottom: -4rem;
+}
 
 /*==== Result ====*/
-h1{
-    color: var(--font-gray);
-    text-align: center;
-}
 
-.container {
-    justify-content: center;
+section#result {
     display: flex;
-    column-gap: 5rem;
+    flex-direction: column;
+    align-items: center;
 }
 
-.ringkasan{
+section#result .result_wrapper div:first-child{
     display: flex;
     flex-direction: column;
 }
 
-.ringkasan textarea{
+section#result .result_wrapper div:first-child label{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+section#result .result_wrapper div:first-child textarea{
+    width: 62.5rem;
+    height: 15rem;
     resize: none;
-    border: 1px solid var(--form-stroke);
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    text-indent: 1rem;
-    padding: 1rem 0;
+    border: 1px solid var(--color-accent);
+    border-radius: var(--border-radius-field);
+    overflow-y: scroll;
+    padding: .5rem;
+    font-size: 1rem;
+    /* font-weight: 500; */
+}
+
+section#result .result_wrapper div:first-child textarea:focus{
     outline: none;
 }
 
-.ringkasan label{
-    color: var(--font-gray);
-    font-size: 1.5em;
-    font-weight: 700;
+section#result .result_wrapper .config{
+    margin-top: .5rem;
+    width: 30rem;
+    height: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+section#result .result_wrapper .config div span{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.popup_rate{
+    display: none;
+}
+
+.popup_rate form label span:hover{
+    color: #F1D00A;
+}
+
+.yellow{
+    color: #F1D00A;
 }

@@ -5,37 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"rel="stylesheet">
     <title>Peringkasan Teks menggunakan PSO dan PFNet</title>
 </head>
 <body>
-    <nav>
-        <div class="logo">
-            <p>Summarization</p>
-        </div>
-        <div class="nav_item">
-            <ul>
-                <li><a href="#">History</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <section>
-        <div class="title">
-            <h1>Peringkasan Teks Berita Menggunakan Algorima PSO dan PFNet</h1>
-        </div>
-
-        <div class="button">
-            <ul>
-                <li>
-                    <label for="pdf">Upload</label>
-                    <input type="file" name="pdf" id="pdf">
-                </li>
-                <li>
-                    <a href="./input berita.html">atau Manual</a>
-                </li>
-            </ul>
-        </div>
-    </section>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="#"><h2>PSO SUMMARIZATION</h2></a>
+            </div>
+            <div class="nav_item">
+                <ul>
+                    <li class="active"><a href="home">Home</a></li>
+                    <li><a href="about">About</a></li>
+                    <li><a href="history">History</a></li>
+                    <li><a href="admin">Login</a></li>
+                </ul>
+            </div>
+        </nav>
     
+        <section id="home">
+            <form id="base" action="" method="post" enctype="multipart/form-data" class="">
+                <div class="wrapper">
+                    <label for="berita">Upload</label>
+                    <input type="file" name="berita" id="berita" accept=".txt">
+                </div>
+                <button type="submit">Summary</button>
+                <p id="manual">or do manualy</p>
+            </form>
+            <form id="modal" action="" method="post" class="switch_display">
+                <div class="modal">
+                    <span class="material-icons-outlined" id="close">close</span>
+                    <div>
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title">
+                    </div>
+                    <div>
+                        <label for="teks">Teks</label>
+                        <textarea name="teks" id="teks"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit">Summary</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+    <footer>
+        <img src="./images/wave (1).svg" alt="wave">
+    </footer>
+    <script src="./js/index.js"></script>
 </body>
 </html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"rel="stylesheet">
+    <title>Peringkasan Teks menggunakan PSO dan PFNet</title>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="#"><h2>PSO SUMMARIZATION</h2></a>
+            </div>
+            <div class="nav_item">
+                <ul>
+                    <li class=""><a href="home">Home</a></li>
+                    <li><a href="about">About</a></li>
+                    <li><a href="history">History</a></li>
+                    <li><a href="admin">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+    
+        <section id="overview">
+            <h1>Overview</h1>
+            <div class="wrapper">
+                <form action="" method="post">
+                    <div>
+                        <div>
+                            <label for="title">Title</label>
+                            <input type="text" name="title" id="title">
+                        </div>
+                        <div>
+                            <label for="teks">Teks</label>
+                            <textarea name="teks" id="teks"></textarea>
+                        </div>
+                        <button id="submitBtn" type="submit">Continue</button>
+                    </div>
+                    <div class="popup_menu">
+                        <div class="link_advance">
+                            <span>Want customize ? </span> 
+                            <span>try <span id="advance">Advance mode</span></span>
+                        </div>
+
+                        <div class="advance_menu switch_display">
+                            <span class="material-icons-outlined" id="close">close</span>
+                            <div class="basic">
+                                <h3>Basic</h3>
+                                <div>
+                                    <label for="population">populations</label>
+                                    <input type="number" name="population" id="population" value="25">
+                                </div>
+                                <div>
+                                    <label for="iteration">Iteration</label>
+                                    <input type="number" name="iteration" id="iteration" value="10000">
+                                </div>
+                                <div>
+                                    <label for="summary">Summary</label>
+                                    <input type="number" name="summary" id="summary" value="40">
+                                    <span>%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="pso">
+                                <h3>PSO</h3>
+                                <div>
+                                    <label for="c1">C1</label>
+                                    <input type="number" name="c1" id="c1" min="1" value="2">
+                                </div>
+                                <div>
+                                    <label for="c2">C2</label>
+                                    <input type="number" name="c2" id="c2" min="1" value="2">
+                                </div>
+                                <div>
+                                    <label for="inertia">Inertia</label>
+                                    <input type="number" name="inertia" id="inertia" min="0.1" max="0.9" step="0.1" value="0.1">
+                                    <span>* inertia between [0.1 - 0.9]</span>
+                                </div>
+                            </div>
+
+                            <div class="mode">
+                                <h3>Mode</h3>
+                                <div>
+                                    <input type="radio" name="mode" id="pso_only" value="pso_only" checked>
+                                    <label for="pso_only">PSO Only</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="mode" id="pso_pfnet" value="pso_pfnet">
+                                    <label for="pso_pfnet">PSO + PFNet</label>
+                                </div>
+                            </div>
+
+                            <button type="reset">Default</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+    </div>
+    <footer>
+        <img src="./images/wave (1).svg" alt="wave">
+    </footer>
+    <script src="./js/overview.js"></script>
+</body>
+</html>

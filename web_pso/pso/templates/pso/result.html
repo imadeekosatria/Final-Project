@@ -1,0 +1,18 @@
+{% extends 'template.html' %} {% block content %}
+<h1>Result</h1>
+<div class="result_wrapper">
+  <div>
+    <label for="teks">Title : {{title}}</label>
+    <textarea name="teks" id="teks">{% for sum in summarization.kalimat %} {{sum}} {% endfor %}</textarea>
+  </div>
+  <div class="config">
+    <span>Final kalimat : {{summarization.final}}</span>
+    <span>Time lapsed : {{summarization.timelapsed}}s</span>
+    <span>Particle : {{particle}}</span>
+    <span>Iteration : {{iteration}}</span>
+    <span>Total kalimat sebelum : {{summarization.totalSebelum}}</span>
+    <span>Total kalimat sesudah : {{summarization.totalSesudah}}</span>
+    {% comment %} <span>Mode : {{mode}}</span> {% endcomment %}
+  </div>
+</div>
+{% endblock content %}

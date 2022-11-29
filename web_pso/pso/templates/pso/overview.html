@@ -1,0 +1,80 @@
+{% extends 'template.html' %} {% block content %} {% comment %}
+<a href="{% url 'pso_process' %}">Proses</a> {% endcomment %}
+<h1>Overview</h1>
+<div class="wrapper">
+  <form action="{% url 'pso_process'%}" method="post">
+    {% csrf_token %}
+    <div class='left'>
+      <div>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" value="{{title}}" />
+      </div>
+      <div>
+        <label for="teks">Teks</label>
+        <textarea name="teks" id="teks">{{teks}}</textarea>
+      </div>
+      <button id="submitBtn" type="submit">Continue</button>
+    </div>
+    <div class="popup_menu">
+      <div class="link_advance">
+        <span>Want customize ? </span>
+        <span>try <span id="advance">Advance mode</span></span>
+      </div>
+
+      <div class="advance_menu switch_display">
+        <span class="material-icons-outlined" id="close">close</span>
+        <div class="basic">
+          <h3>Basic</h3>
+          <div>
+            <label for="population">populations</label>
+            <input type="number" name="population" id="population" value="25" />
+          </div>
+          <div>
+            <label for="iteration">Iteration</label>
+            <input type="number" name="iteration" id="iteration" max="1000" value="1000"/>
+          </div>
+          <div>
+            <label for="summary">Summary</label>
+            <input type="number" name="summary" id="summary" value="40"/>
+            <span>%</span>
+          </div>
+        </div>
+
+        <div class="pso">
+          <h3>PSO</h3>
+          <div>
+            <label for="c1">C1</label>
+            <input type="number" name="c1" id="c1" min="1" value="2" />
+          </div>
+          <div>
+            <label for="c2">C2</label>
+            <input type="number" name="c2" id="c2" min="1" value="2" />
+          </div>
+          <div>
+            <label for="inertia">Inertia</label>
+            <input
+              type="number" name="inertia" id="inertia" min="0.1" max="0.9" step="0.1" value="0.1"/>
+            <span>* inertia between [0.1 - 0.9]</span>
+          </div>
+        </div>
+
+        <div class="mode switch_display">
+          <h3>Mode</h3>
+          <div>
+            <input type="radio" name="mode" id="pso_only" value="pso_only" checked />
+            <label for="pso_only">PSO Only</label>
+          </div>
+          {% comment %} <div>
+            <input type="radio" name="mode" id="pso_pfnet" value="pso_pfnet" />
+            <label for="pso_pfnet">PSO + PFNet</label>
+          </div> {% endcomment %}
+        </div>
+        <div>
+            <button type="reset">Default</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock content %}

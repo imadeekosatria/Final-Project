@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"rel="stylesheet">
+    <title>{{title}}</title>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="#"><h2>PSO SUMMARIZATION</h2></a>
+            </div>
+            <div class="nav_item">
+                <ul>
+                    
+                    <li class="{% if id == 'home' %}active{% endif %}"><a href="/">Home</a></li>
+                    <li><a href="about">About</a></li>
+                    <li><a href="history">History</a></li>
+                    <li><a href=" admin">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+        <section id="{{id}}">
+            {% block content %}
+        
+        
+            {% endblock content %}
+        </section>
+    </div>
+    <footer>
+        <img src="{% static 'images/wave (1).svg'%}" alt="wave">
+    </footer>
+    <script src="{% static 'js/'%}{{js}}"></script>
+</body>
+</html>

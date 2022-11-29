@@ -1,0 +1,35 @@
+{% extends 'template.html' %}
+{% block content %}
+
+<form id="base" action="upload" method="post" enctype="multipart/form-data" class="">
+    {% csrf_token %}
+    <div class="wrapper">
+        <label for="berita">Upload</label>
+        <input type="file" name="berita" id="berita" accept=".txt">
+    </div>
+    <button type="submit">Summary</button>
+    <p id="manual">or do manualy</p>
+</form>
+<form id="modal" action="upload" method="post" class="switch_display">
+    {% csrf_token %}
+    <div class="modal">
+        <span class="material-icons-outlined" id="close">close</span>
+        <div>
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" required>
+        </div>
+        <div>
+            <label for="teks">Teks</label>
+            <textarea name="teks" id="teks"></textarea required>
+        </div>
+        <div>
+            <button type="submit">Summary</button>
+        </div>
+    </div>
+</form>
+
+{% if uploaded_file_url %}
+    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+{% endif %}
+
+{% endblock content %}
