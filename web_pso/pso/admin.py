@@ -1,5 +1,14 @@
 from django.contrib import admin
-from .models import Berita
+from .models import Berita, Ringkasan
 # Register your models here.
 
-admin.site.register(Berita)
+
+class BeritaAdmin(admin.ModelAdmin):
+    list_display = ['judul', 'created']
+
+class RingkasanAdmin(admin.ModelAdmin):
+    list_display= ['judul', 'iteration', 'particle', 'timelapsed', 'total_sebelum', 'total_sesudah','created']
+    list_filter= ['judul', 'iteration', 'particle', 'created']
+
+admin.site.register(Berita, BeritaAdmin)
+admin.site.register(Ringkasan, RingkasanAdmin)

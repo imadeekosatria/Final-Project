@@ -136,7 +136,6 @@ class PSO():
 
     def run_pso(self):
         print('run_pso')
-        start = time.process_time()
         gbest_pos = []
         gbest = 0
         final = []
@@ -201,7 +200,6 @@ class PSO():
         get_kalimat = []
         for f in final:
             get_kalimat.append(self.dic["kalimat " +str(f)]['kalimat'])
-        end = time.process_time()
-        timelapsed = (end - start)
-        data_pso = {'timelapsed':timelapsed,'kalimat': get_kalimat, 'final': final, 'totalSebelum': len(self.info), 'totalSesudah': len(final)}
+        
+        data_pso = {'kalimat': get_kalimat, 'final': final, 'totalSebelum': len(self.info), 'totalSesudah': len(final)}
         return data_pso
