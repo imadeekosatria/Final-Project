@@ -4,7 +4,7 @@ from django.db import models
 class Berita(models.Model):
     judul = models.CharField(max_length=255, unique=True)
     teks = models.TextField() 
-    file = models.FileField(default=None)
+    file = models.FileField(default=None, max_length=255)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) :
