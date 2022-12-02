@@ -165,9 +165,14 @@ class PSO():
             
             if not final:
                 final = gbest_pos
-            elif len(final) > len(gbest_pos):
-                print("ada error \n")
-                break
+            elif final == gbest_pos:
+                length_swarm = len(self.swarm)
+                count = 0
+                for p in self.swarm:
+                    if self.swarm[p]['posisi'] == gbest_pos:
+                        count += 1
+                if count == length_swarm:
+                    break
             else:
                 final = gbest_pos
                 

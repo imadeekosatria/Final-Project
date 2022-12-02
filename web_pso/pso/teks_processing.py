@@ -290,7 +290,7 @@ def text_preprocessing(text, title, population, summary):
     # percentage = int(summary)/100
     # print(percentage)
     for i in range(int(population)):
-        print('Loop ',i)
+        # print('Loop ',i)
         jalur = []
         while len(jalur) != math.ceil(len(vertex)*int(summary)/100): # <--- len(vertex)*2/10 atau int 4
             r = random.choice(vertex)

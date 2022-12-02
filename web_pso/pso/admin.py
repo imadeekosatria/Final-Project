@@ -8,7 +8,7 @@ class BeritaAdmin(admin.ModelAdmin):
 
 class RingkasanAdmin(admin.ModelAdmin):
     list_display= ['judul', 'iteration', 'particle', 'timelapsed', 'total_sebelum', 'total_sesudah','created']
-    list_filter= ['judul', 'iteration', 'particle', 'created']
+    list_filter= ['iteration', 'particle', 'created']
 
 admin.site.register(Berita, BeritaAdmin)
 admin.site.register(Ringkasan, RingkasanAdmin)
