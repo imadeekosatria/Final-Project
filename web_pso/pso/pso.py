@@ -131,7 +131,7 @@ class PSO():
                     break
 
         self.swarm[p]['posisi'] = new_pos
-        # print(p + ':' + str(new_pos))
+        print(p + ':' + str(new_pos)) #Print (posisi particle)
         return self.swarm[p]['posisi']
 
     def run_pso(self):
@@ -159,7 +159,7 @@ class PSO():
                 else:
                     # swarm[p]['gbest'] = False
                     pass
-
+            
             print("GBest iterasi " +str(it) + ": "+str(gbest))
             print("GBest Solusi : " + str(gbest_pos))
             
@@ -202,6 +202,10 @@ class PSO():
         # print("best position : ", final)
         # print("\n")
         final = sorted(final)
+        # rank ={}
+        # for f in final:
+        #     rank[f] = self.find_iscore(f)
+        # final = sorted(rank.items(), key=lambda x:x[1], reverse=True)
         get_kalimat = []
         for f in final:
             get_kalimat.append(self.dic["kalimat " +str(f)]['kalimat'])
