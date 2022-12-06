@@ -4,6 +4,7 @@ from .models import Berita, Ringkasan
 from pathlib import Path
 from .teks_processing import *
 from .pso import *
+from .pfnet import *
 # Create your views here.
 def index(request):
     content = {
@@ -62,16 +63,20 @@ def pso_process(request):
         start = time.perf_counter()
         title = request.POST.get('title')
         teks = request.POST.get('teks')
+        mode = request.POST.get('mode')
 
         text_preprocessing(request.POST.get('teks'), request.POST.get('title'), request.POST.get('population'), request.POST.get('summary'))
-
+    
+        if mode == 'pso_pfnet':
+            pfnet()
+        
         p = PSO(request.POST.get('c1'), request.POST.get('c2'), request.POST.get('iteration'), request.POST.get('inertia'), request.POST.get('mode'))
         p.init_particle()
         summarization = p.run_pso()
         summary = ' '.join(map(str, summarization['kalimat']))        
         end = time.perf_counter()
         timelapsed = (end - start)
-        dbringkasan = Ringkasan(judul=title, teks_asli =teks, ringkasan = summary, kalimat=summarization['final'], iteration=request.POST.get('iteration'), particle=request.POST.get('population'), timelapsed = timelapsed, total_sebelum = summarization['totalSebelum'], total_sesudah=summarization['totalSesudah'])
+        dbringkasan = Ringkasan(judul=title, teks_asli =teks, ringkasan = summary, kalimat=summarization['final'], iteration=request.POST.get('iteration'), particle=request.POST.get('population'), timelapsed = timelapsed, total_sebelum = summarization['totalSebelum'], total_sesudah=summarization['totalSesudah'], mode=request.POST.get('mode'))
         dbringkasan.save()
-        data = {'timelapsed': int(timelapsed),'title': request.POST.get('title'), 'summarization': summarization, 'js':'result.js', 'id':'result', 'iteration': request.POST.get('iteration'),'particle':request.POST.get('population'), 'mode': request.POST.get('mode')}
+        data = {'timelapsed': int(timelapsed),'title': request.POST.get('title'), 'summarization': summarization, 'js':'result.js', 'id':'result', 'iteration': summarization['iteration'], 'iteration_base': request.POST.get('iteration'),'particle':request.POST.get('population'), 'mode': request.POST.get('mode')}
         return render(request, 'result.html', data)

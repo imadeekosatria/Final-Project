@@ -7,12 +7,17 @@ class PSO():
         self.c2 = int(c2)
         self.iteration = int(iteration)
         self.inertia = float(inertia)
-        self.mode = mode
-        # Read json file
-        f = open('pso/jsonfile/cosine_similarity.json')
+        self.mode = mode 
 
-        self.cosine = json.load(f)
-        f.close()
+        # Read json file
+        if self.mode == 'pso_pfnet':
+            f = open('pso/jsonfile/pfnet_cosine_similarity.json')
+            self.cosine = json.load(f)
+            f.close()
+        else:
+            f = open('pso/jsonfile/cosine_similarity.json')
+            self.cosine = json.load(f)
+            f.close()
 
         self.cosine_similarity = {}
 
@@ -201,6 +206,7 @@ class PSO():
 
         # print("best position : ", final)
         # print("\n")
+        loop = it
         final = sorted(final)
         # rank ={}
         # for f in final:
@@ -210,5 +216,5 @@ class PSO():
         for f in final:
             get_kalimat.append(self.dic["kalimat " +str(f)]['kalimat'])
         
-        data_pso = {'kalimat': get_kalimat, 'final': final, 'totalSebelum': len(self.info), 'totalSesudah': len(final)}
+        data_pso = {'kalimat': get_kalimat, 'final': final, 'totalSebelum': len(self.info), 'totalSesudah': len(final), 'iteration': loop}
         return data_pso

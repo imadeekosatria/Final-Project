@@ -23,6 +23,7 @@ class Ringkasan(models.Model):
     timelapsed = models.IntegerField(verbose_name='Time Lapsed (seconds)', default=None)
     total_sebelum = models.IntegerField(default=None)
     total_sesudah = models.IntegerField(default=None)
+    mode = models.CharField(max_length=255, default='pso')
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

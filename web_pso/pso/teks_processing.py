@@ -277,7 +277,9 @@ def text_preprocessing(text, title, population, summary):
                 d = x[1]
                 if a == d and b == c:
                     edge.remove(x)
-
+    print('Export edge JSON')
+    with open('pso/jsonfile/edge.json', 'w') as json_file:
+        json.dump(edge, json_file)
     # Graf II
     print('Graf II')
     vertex = [] # Vertex
