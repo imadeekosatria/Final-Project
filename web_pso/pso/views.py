@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
-from .models import Berita, Ringkasan
+from .models import Berita, Ringkasan, Comparison
 from pathlib import Path
 from .teks_processing import *
 from .pso import *
@@ -130,6 +130,32 @@ def pso_process(request):
         end_pfnet = time.perf_counter()
         pfnet_time = (end_pfnet - start_pfnet)
         timelapsed_pfnet = int(text_prep_time + pfnet_time)
+
+        #Save DB
+        dbcomparison = Comparison(
+            judul=title,
+            teks_asli = teks,
+
+            ringkasan_pso = summary_pso,
+            kalimat_pso = data_pso['final'],
+            iteration_done_pso = data_pso['iteration'],
+            iteration_pso = iteration,
+            particle_pso = population,
+            timelapsed_pso = timelapsed_pso,
+            total_sebelum_pso = data_pso['totalSebelum'],
+            total_sesudah_pso = data_pso['totalSesudah'],
+
+            ringkasan_pfnet = summary_pfnet,
+            kalimat_pfnet = data_pfnet['final'],
+            iteration_done_pfnet = data_pfnet['iteration'],
+            iteration_pfnet = iteration,
+            particle_pfnet = population,
+            timelapsed_pfnet = timelapsed_pfnet,
+            total_sebelum_pfnet = data_pfnet['totalSebelum'],
+            total_sesudah_pfnet = data_pfnet['totalSesudah']
+        )
+
+        dbcomparison.save()
 
         # Return Data
         data = {

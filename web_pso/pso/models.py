@@ -28,3 +28,32 @@ class Ringkasan(models.Model):
 
     def __str__(self):
         return str(self.judul)
+    
+class Comparison(models.Model):
+    judul = models.CharField(max_length=255)
+    teks_asli = models.TextField()
+
+    #PSO
+    ringkasan_pso = models.TextField()
+    kalimat_pso = models.CharField(default=None, max_length=255)
+    iteration_done_pso = models.IntegerField(default=None)
+    iteration_pso = models.IntegerField(default=None)
+    particle_pso = models.IntegerField(default=None)
+    timelapsed_pso = models.IntegerField(verbose_name='Time Lapsed (seconds)', default=None)
+    total_sebelum_pso = models.IntegerField(default=None)
+    total_sesudah_pso = models.IntegerField(default=None)
+
+    #PFNet
+    ringkasan_pfnet = models.TextField()
+    kalimat_pfnet = models.CharField(default=None, max_length=255)
+    iteration_done_pfnet = models.IntegerField(default=None)
+    iteration_pfnet = models.IntegerField(default=None)
+    particle_pfnet = models.IntegerField(default=None)
+    timelapsed_pfnet = models.IntegerField(verbose_name='Time Lapsed (seconds)', default=None)
+    total_sebelum_pfnet = models.IntegerField(default=None)
+    total_sesudah_pfnet = models.IntegerField(default=None)
+
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.judul)
