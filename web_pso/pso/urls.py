@@ -12,6 +12,7 @@ urlpatterns = [
     path('upload_manual', views.manual, name='manual'),
     path('overview/<str:name>', views.overview, name='overview'),
     path('pso_process/', views.pso_process, name='pso_process'),
+    path('comparison', views.comparison, name='comparison'),
 ]
 
 if settings.DEBUG:

@@ -1,7 +1,7 @@
 import json, random, time
 
 class PSO():
-    def __init__(self, c1, c2, iteration, inertia, mode):
+    def __init__(self, c1, c2, iteration, inertia, mode='pso_only'):
         # print('init')
         self.c1 = int(c1)
         self.c2 = int(c2)
@@ -216,5 +216,10 @@ class PSO():
         for f in final:
             get_kalimat.append(self.dic["kalimat " +str(f)]['kalimat'])
         
-        data_pso = {'kalimat': get_kalimat, 'final': final, 'totalSebelum': len(self.info), 'totalSesudah': len(final), 'iteration': loop}
+        if self.mode == 'pso_only':
+            result_mode = 'PSO'
+        elif self.mode == 'pso_pfnet':
+            result_mode = 'PSO + PFNet'
+        
+        data_pso = {'kalimat': get_kalimat, 'final': final, 'totalSebelum': len(self.info), 'totalSesudah': len(final), 'iteration': loop, 'mode':result_mode}
         return data_pso

@@ -1,4 +1,5 @@
-{% extends 'template.html' %} {% block content %} {% comment %}
+{% extends 'template.html' %} 
+{% block content %} {% comment %}
 <a href="{% url 'pso_process' %}">Proses</a> {% endcomment %}
 <h1>Overview</h1>
 <div class="wrapper">
@@ -67,6 +68,10 @@
           <div>
             <input type="radio" name="mode" id="pso_pfnet" value="pso_pfnet" />
             <label for="pso_pfnet">PSO + PFNet</label>
+          </div>
+          <div>
+            <input type="radio" name="mode" id="comparison" value="comparison" />
+            <label for="comparison">Comparison</label>
           </div>
         </div>
         <div> 

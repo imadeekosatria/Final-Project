@@ -1,0 +1,36 @@
+{% extends 'template.html' %} 
+{% block content %}
+<h1>Comparison</h1>
+
+<h2>{{ title }}</h2>
+
+<div class="comparison_wrapper">
+    <!--PSO-->
+    <div class="pso">
+        <h2>{{ pso.mode }}</h2>
+        <textarea>{{pso_summary}}</textarea>
+        <div class="config">
+            <span>Final kalimat : {{pso.final}}</span>
+            <span>Time lapsed : {{pso_time}}s</span>
+            <span>Particle : {{particle}}</span>
+            <span>Iteration : {{pso.iteration}} / {{iteration}}</span>
+            <span>Total kalimat sebelum : {{pso.totalSebelum}}</span>
+            <span>Total kalimat sesudah : {{pso.totalSesudah}}</span>
+        </div>
+    </div>
+    <!--PFNet-->
+    <div class="pfnet">
+        <h2>{{ pfnet.mode }}</h2>
+        <textarea>{{pfnet_summary}}</textarea>
+        <div class="config">
+            <span>Final kalimat : {{pfnet.final}}</span>
+            <span>Time lapsed : {{pfnet_time}}s</span>
+            <span>Particle : {{particle}}</span>
+            <span>Iteration : {{pfnet.iteration}} / {{iteration}}</span>
+            <span>Total kalimat sebelum : {{pfnet.totalSebelum}}</span>
+            <span>Total kalimat sesudah : {{pfnet.totalSesudah}}</span>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
