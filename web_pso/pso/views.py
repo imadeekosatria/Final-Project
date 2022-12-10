@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from django.core.files.storage import FileSystemStorage
 from .models import Berita, Ringkasan, Comparison
 from pathlib import Path
 from .teks_processing import *
 from .pso import *
 from .pfnet import *
+import json
 # Create your views here.
 def index(request):
     content = {
@@ -59,7 +61,7 @@ def overview(request, name):
     return render(request, 'overview.html', data)
 
 def pso_process(request):
-    if request.method == 'POST' and request.POST.get('title') and request.POST.get('mode') != 'comparison':
+    if request.method == 'POST' and request.POST.get('mode') != 'comparison' and request.POST.get('testing_iteration') == None:
         start = time.perf_counter()
         title = request.POST.get('title')
         teks = request.POST.get('teks')
@@ -84,7 +86,7 @@ def pso_process(request):
         data = {'timelapsed': int(timelapsed),'title': request.POST.get('title'), 'summarization': summarization, 'js':'result.js', 'id':'result', 'iteration': summarization['iteration'], 'iteration_base': request.POST.get('iteration'),'particle':request.POST.get('population'), 'mode': request.POST.get('mode')}
         return render(request, 'result.html', data)
 
-    elif request.method == 'POST' and request.POST.get('mode') == 'comparison':
+    elif request.method == 'POST' and request.POST.get('mode') == 'comparison' and request.POST.get('testing_iteration') == None:
         #Text Processing 
         start_text_prep =time.perf_counter()
         title = request.POST.get('title')
@@ -171,10 +173,115 @@ def pso_process(request):
             'iteration':iteration,
             }
         return render(request, 'comparison.html', data)
+    elif request.method == 'POST' and request.POST.get('testing_iteration'):
+        start_text_prep =time.perf_counter()
+        title = request.POST.get('title')
+        teks = request.POST.get('teks')
+        c1 = request.POST.get('c1')
+        c2 = request.POST.get('c2')
+        iteration = request.POST.get('iteration')
+        inertia = request.POST.get('inertia')
+        population = request.POST.get('population')
+        summary = request.POST.get('summary')
+        testing_iteration = int(request.POST.get('testing_iteration'))
+        mode = request.POST.get('mode')
+
+        text_preprocessing(text=teks, title=title, population=population, summary=summary)
+
+        end_text_prep = time.perf_counter()
+        text_prep_time = (end_text_prep - start_text_prep)
+
+        data = {'c1':c1, 'c2':c2, 'inertia':inertia, 'iteration':iteration,'text_prep_time':text_prep_time}
+
+        testing = testingMode(iteration=testing_iteration,mode=mode, data=data)
+
+        return render(request, 'resultTesting.html', testing)
+
+        # return JsonResponse(testing)
+        
+def get_result_json(request, name):
+    if request.method == 'GET':
+        f = open('pso/jsonfile/data pengujian/'+str(name)+'.json')
+        data = json.load(f)
+        f.close()
+    return JsonResponse(data)
+
+def testingMode(iteration, mode, data):
+    print("Mode Testing...\n")
+    from datetime import datetime
+    date =datetime.now()
+    name = date.date()
+    data_test = {}
+    if mode == 'pso_only':
+        data_test
+        data_test['Mode']= 'PSO'
+        data_test['iteration'] = data['iteration']
+        data_test['Uji']= testingProses(iteration=iteration, data=data, mode=mode, text_time=data['text_prep_time'])
+
+        with open('pso/jsonfile/data pengujian/'+str(name)+'.json', 'w') as json_file:
+            json.dump(data_test, json_file)
+        
+    elif mode == 'pso_pfnet':
+        data_test['Mode'] ='PSO + PFNet'
+        data_test['iteration'] = data['iteration']
+        data_test['Uji']=testingProses(iteration=iteration, data=data, mode=mode, text_time=data['text_prep_time'])
+
+        with open('pso/jsonfile/data pengujian/'+str(name)+'.json', 'w') as json_file:
+            json.dump(data_test, json_file)
+        
+        
+    elif mode == 'comparison':
+        data_test['Mode'] = 'comparison'
+        data_test['iteration'] = data['iteration']
+
+        data_test['Uji'] = {} 
+        data_test['Uji']['PSO'] = testingProses(iteration=iteration, data=data, mode='pso_only', text_time=data['text_prep_time'])
+        data_test['Uji']['PFNet'] =testingProses(iteration=iteration, data=data, mode='pso_pfnet', text_time=data['text_prep_time'])
+        with open('pso/jsonfile/data pengujian/'+str(name)+'.json', 'w') as json_file:
+            json.dump(data_test, json_file)
+        
+    testing = {'id':'testing','name':name.strftime("%Y-%m-%d"),'testing':True,'js':'result.js'}
+
+
+    return testing
+
+def testingProses(iteration, data, mode, text_time):
+    data_dict = {}
+    print("Testing Proses")
+    time.sleep(1)
+    
+    for i in range(iteration):
+        print("Testing "+str(i+1))
+        time.sleep(3)
+        data_dict['test '+ str(i+1)] = {}
+        start_pso = time.perf_counter()
+        pso = PSO(c1=data['c1'], c2=data['c2'], inertia=data['inertia'], iteration=data['iteration'], mode=mode)
+        pso.init_particle()
+        result = pso.run_pso()
+        end_pso = time.perf_counter()
+        timelapsed = int(end_pso - start_pso)
+        data_dict['test '+ str(i+1)]['kalimat'] = result['final']
+        data_dict['test '+ str(i+1)]['iteration finish'] = result['iteration']
+        data_dict['test '+ str(i+1)]['timelapsed'] = int(timelapsed+text_time)
+        data_dict['test '+ str(i+1)]['gbest'] = result['gbest'] 
+
+    return data_dict
+
+    
 
 def comparison(request):
     data ={
         'id':'comparison',
         'title': 'UJI Coba',
     }
-    return render(request, 'comparison.html', data)
+    return render(request, 'resultTesting.html', data)
+
+def resultTesting(request):
+    from datetime import datetime
+    data = {
+        'id': 'testing',
+        'testing': True,
+        'name': datetime.now().strftime("%Y-%m-%d"),
+    }
+
+    return render(request, 'resultTesting.html', data)

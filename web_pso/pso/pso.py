@@ -221,5 +221,5 @@ class PSO():
         elif self.mode == 'pso_pfnet':
             result_mode = 'PSO + PFNet'
         
-        data_pso = {'kalimat': get_kalimat, 'final': final, 'totalSebelum': len(self.info), 'totalSesudah': len(final), 'iteration': loop, 'mode':result_mode}
+        data_pso = {'kalimat': get_kalimat, 'final': final, 'totalSebelum': len(self.info), 'totalSesudah': len(final), 'iteration': loop, 'gbest':gbest,'mode':result_mode}
         return data_pso

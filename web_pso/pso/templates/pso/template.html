@@ -35,6 +35,158 @@
     <footer>
         <img src="{% static 'images/wave (1).svg'%}" alt="wave">
     </footer>
+    {% if testing %}
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.js"></script>
+        <script>
+            const nameJS = document.getElementById('name');
+
+            const api_url = 'http://127.0.0.1:8000/get_result_json/'+nameJS.innerHTML;
+            
+            // const min = dataTimelapsed.sort(function(a, b){return a - b});
+            fetch(api_url)
+            .then((response) => response.json())
+            .then((dataJS)=> {
+                if (dataJS.Mode != 'comparison'){
+                    const dataTimelapsed = [];
+                    const datalabels = []; // Untuk horizontal labels
+                    for (const key in dataJS.Uji) {
+                        datalabels.push(key);
+                        dataTimelapsed.push(dataJS.Uji[key].timelapsed);
+                    }
+                    const data = {
+                        labels: datalabels,
+                        datasets: [{
+                        label: 'PSO',
+                        backgroundColor: 'rgba(207, 235, 255, 0.5)',
+                        borderColor: '#0E9CFF',
+                        data: dataTimelapsed, // Untuk vertical labels
+                        fill: true
+            
+                        },
+                        ]
+                    };
+                    const config = {
+                        type: 'line',
+                        data: data,
+                        options: {
+                            responsive: true,
+                            plugins: {
+                            filler: {
+                            propagate: true,
+                            },
+                            title: {
+                            display: false,
+                            text: (ctx) => 'Data Uji Coba Timelapsed'
+                            }
+                        },
+                        interaction: {
+                            intersect: false,
+                        },
+                        elements:{
+                            line:{
+                                tension: 0.4
+                            }
+                        },
+                        scales:{
+                            y:{
+                                min: 0,
+                                max: 100,
+                            }
+                        }
+                        }
+                    };
+            
+                    
+                    const myChart = new Chart(
+                        document.getElementById('myChart'),
+                        config
+                    );
+                }else if (dataJS.Mode == 'comparison'){
+                    // console.log('Pass');
+                    // const dataTimelapsed = [];
+                    const datalabels = [];
+                    const pso =[];
+                    const pfnet = [];
+                    for (k in dataJS.Uji){
+                        if (k == 'PSO') {
+                            for (t in dataJS.Uji[k]) {
+                                if (datalabels.includes(t) == false){
+                                    datalabels.push(t);
+                                }
+                                pso.push(dataJS.Uji[k][t].timelapsed);
+                            }
+                            console.log(datalabels);
+                            // console.log(pso);
+                        }else if (k == 'PFNet'){
+                            for (t in dataJS.Uji[k]) {
+                                pfnet.push(dataJS.Uji[k][t].timelapsed);
+                            }
+                            // console.log(pfnet);
+                        }
+                    }
+                    console.log(pso);
+                    console.log(pfnet)
+                    const data = {
+                        labels: datalabels,
+                        datasets: [
+                            {
+                                label: 'PSO',
+                                backgroundColor: 'rgba(54, 162, 235, 0.4)',
+                                borderColor: '#0E9CFF',
+                                data: pso, // Untuk vertical labels
+                                fill: true
+                            },
+                            {
+                                label: 'PSO + PFNet',
+                                backgroundColor: 'rgba(255, 99, 132, 0.4)',
+                                borderColor: '#e2777a',
+                                data: pfnet, // Untuk vertical labels
+                                fill: true
+                            },
+                        ]
+                    };
+                    const config = {
+                        type: 'line',
+                        data: data,
+                        options: {
+                            responsive: true,
+                            plugins: {
+                            filler: {
+                            propagate: true,
+                            },
+                            title: {
+                            display: false,
+                            text: (ctx) => 'Data Uji Coba Timelapsed'
+                            }
+                        },
+                        interaction: {
+                            intersect: false,
+                        },
+                        elements:{
+                            line:{
+                                tension: 0.4
+                            }
+                        },
+                        scales:{
+                            y:{
+                                min: 0,
+                                max: 100,
+                            }
+                        }
+                        }
+                    };
+            
+                    
+                    const myChart = new Chart(
+                        document.getElementById('myChart'),
+                        config
+                    );
+                }
+                // const max = dataTimelapsed.sort(function(a, b){return b - a});
+                // const new_max = max[0] + 10;
+            });
+        </script>
+    {% endif %}
     <script src="{% static 'js/'%}{{js}}"></script>
 </body>
 </html>

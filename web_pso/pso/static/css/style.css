@@ -319,7 +319,11 @@ section#overview .wrapper form .left input,section#overview .wrapper form div:nt
     border: 1px solid var(--color-accent);
     border-radius: var(--border-radius-field);
 } 
-
+section#overview .wrapper form .popup_menu{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
 section#overview .wrapper form .popup_menu .link_advance{
     width: 12.5rem;
     height: 4.375rem;
@@ -338,17 +342,37 @@ section#overview .wrapper form .popup_menu .link_advance{
     /* transition: all ease-out 1s; */
 }
 
-section#overview .wrapper form .popup_menu .link_advance span#advance{
+section#overview .wrapper form .popup_menu .link_advance span#advance,
+section#overview .wrapper form .popup_menu .testing span#mode_research{
     color: var(--color-accent);
     font-weight: 700;
     cursor: pointer;
 }
 
-section#overview .wrapper form .popup_menu .link_advance span#advance:hover{
+section#overview .wrapper form .popup_menu .link_advance span#advance:hover,
+section#overview .wrapper form .popup_menu .testing span#mode_research:hover{
     color: var(--font);
 }
 
-section#overview .wrapper form .popup_menu .advance_menu{
+section#overview .wrapper form .popup_menu .testing{
+    width: 12.5rem;
+    height: 4.375rem;
+    line-height: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--font);
+    background-color: var(--background-field);
+    border: 1px solid var(--color-accent);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius-field);
+    box-shadow: var(--box-shadow);
+}
+
+section#overview .wrapper form .popup_menu .advance_menu,
+section#overview .wrapper form .popup_menu .research_menu{
     background-color: var(--background-field);
     border: 1px solid var(--color-accent);
     width: 25rem;
@@ -359,7 +383,8 @@ section#overview .wrapper form .popup_menu .advance_menu{
     /* transition: all ease-out 1s; */
 }
 
-section#overview .wrapper form .popup_menu .advance_menu span#close{
+section#overview .wrapper form .popup_menu .advance_menu span#close,
+section#overview .wrapper form .popup_menu .research_menu span#close_research{
     position: absolute;
     right: .5rem;
     top: .5rem;
@@ -367,71 +392,96 @@ section#overview .wrapper form .popup_menu .advance_menu span#close{
     z-index: 2;
 }
 
-section#overview .wrapper form .popup_menu .advance_menu span:hover{
+section#overview .wrapper form .popup_menu .advance_menu span:hover,
+section#overview .wrapper form .popup_menu .research_menu span:hover{
     color: var(--color-accent);
 }
 
 section#overview .wrapper form .popup_menu .advance_menu .basic h3,
 section#overview .wrapper form .popup_menu .advance_menu .pso h3,
-section#overview .wrapper form .popup_menu .advance_menu .mode h3{
+section#overview .wrapper form .popup_menu .advance_menu .mode h3,
+section#overview .wrapper form .popup_menu .research_menu .basic h3,
+section#overview .wrapper form .popup_menu .research_menu .pso h3,
+section#overview .wrapper form .popup_menu .research_menu .mode h3{
     font-size: 1rem;
     font-weight: 600;
 }
 
-section#overview .wrapper form .popup_menu .advance_menu > div{
+section#overview .wrapper form .popup_menu .advance_menu > div,
+section#overview .wrapper form .popup_menu .research_menu > div{
     row-gap: .5rem;
     margin: .5rem 1rem;
 }
 
-section#overview .wrapper form .popup_menu .advance_menu > .basic div:last-child{
+section#overview .wrapper form .popup_menu .advance_menu > .basic div:last-child,
+section#overview .wrapper form .popup_menu .research_menu > .basic div:last-child{
    display: grid;
    grid-template-columns: 5rem 0rem 1fr;
    column-gap: 3rem;
 }
 
-section#overview .wrapper form .popup_menu .advance_menu .basic div:last-child > span:hover{
+section#overview .wrapper form .popup_menu .advance_menu .basic div:last-child > span:hover,
+section#overview .wrapper form .popup_menu .research_menu .basic div:last-child > span:hover{
     color: var(--font)!important;
 }
 
-section#overview .wrapper form .popup_menu .advance_menu div div{
+section#overview .wrapper form .popup_menu .advance_menu div div,
+section#overview .wrapper form .popup_menu .research_menu div div{
     display: grid;
     grid-template-columns: 5rem 1fr;
     align-items: center;
     column-gap: 3rem;
 }
 
-section#overview .wrapper form .popup_menu .advance_menu div div label{
+section#overview .wrapper form .popup_menu .advance_menu div div label,
+section#overview .wrapper form .popup_menu .research_menu div div label{
     font-size: 0.875rem;
     font-weight: 500;
 }
-section#overview .wrapper form .popup_menu .advance_menu .basic > div:nth-child(3) input{
+section#overview .wrapper form .popup_menu .advance_menu .basic > div:nth-child(3) input,
+section#overview .wrapper form .popup_menu .research_menu .basic > div:nth-child(3) input{
     width: 4rem;
 }
-section#overview .wrapper form .popup_menu .advance_menu div div input{
+section#overview .wrapper form .popup_menu .advance_menu div div input,
+section#overview .wrapper form .popup_menu .research_menu div div input{
     width: 3rem;
 }
 
-section#overview .wrapper form .popup_menu .advance_menu > .pso div:last-child{
+section#overview .wrapper form .popup_menu .advance_menu > .pso div:last-child,
+section#overview .wrapper form .popup_menu .research_menu > .pso div:last-child{
     display: grid;
    grid-template-columns: 5rem 0rem 1fr;
    column-gap: 3rem;
 }
 
-section#overview .wrapper form .popup_menu .advance_menu > .pso div:last-child > span{
+section#overview .wrapper form .popup_menu .advance_menu > .pso div:last-child > span,
+section#overview .wrapper form .popup_menu .research_menu > .pso div:last-child > span{
     color: #EE2F2F;
     font-size: .87rem;
 }
 
-section#overview .wrapper form .popup_menu .advance_menu > .mode div{
+section#overview .wrapper form .popup_menu .advance_menu > .mode div,
+section#overview .wrapper form .popup_menu .research_menu > .mode div{
     display: flex;
     flex-direction: row;
     column-gap: .5rem;
 }
-section#overview .wrapper form .popup_menu .advance_menu > div{
+section#overview .wrapper form .popup_menu .advance_menu > div,
+section#overview .wrapper form .popup_menu .research_menu > div{
     width: 100%;
     position: relative;
 }
-section#overview .wrapper form .popup_menu .advance_menu > div button[type="reset"]{
+
+section#overview .wrapper form .popup_menu .research_menu div#h3testing{
+    display: flex;
+    column-gap: 1rem;
+}
+
+section#overview .wrapper form .popup_menu .research_menu div#h3testing input{
+    width: 3rem;
+}
+section#overview .wrapper form .popup_menu .advance_menu > div button[type="reset"],
+section#overview .wrapper form .popup_menu .research_menu > div button[type="reset"]{
     position: absolute;
     width: 4.375rem;
     height: 1.5625rem;
@@ -576,4 +626,21 @@ section#comparison .comparison_wrapper .pfnet .config span{
 section#comparison .comparison_wrapper .pso h2,
 section#comparison .comparison_wrapper .pfnet h2{
     text-align: center;
+}
+
+section#testing{
+    height: 10rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.chart_container{
+    width: 50rem;
+    /* height: 10rem; */
+    background-color: var(--background-field);
+    border-radius: 15px;
+    margin-top: 1rem;
+    padding: 1rem;
+    box-shadow: var(--box-shadow);
 }
