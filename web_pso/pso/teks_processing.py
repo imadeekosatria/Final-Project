@@ -1,6 +1,6 @@
 import string
 import re
-from nltk.tokenize import word_tokenize
+from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.corpus import stopwords
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 import math, json, random
@@ -8,19 +8,25 @@ import math, json, random
 
 def text_preprocessing(text, title, population, summary):
     new_text =  ' '.join(text.splitlines())
-        
+
     # Segmentasi
-    print('Segmentasi')
+    segment_sentence = sent_tokenize(new_text)
     dict = {}
-    n = 1
-    for i in new_text.split('. '):
-        for k in i.split('\n'):
-            if i == '':
-                break
-            # i = re.sub('\s+', ' ', i)
-            tes = {'kalimat' : i+'.'}
-            dict['kalimat ' + str(n)] = tes
-            n += 1
+    for sentence in range(len(segment_sentence)):
+        dict['kalimat '+str(sentence+1)] = {}
+        dict['kalimat '+str(sentence+1)]['kalimat'] = segment_sentence[sentence]
+# print(dict)
+    # print('Segmentasi')
+    # dict = {}
+    # n = 1
+    # for i in new_text.split('. '):
+    #     for k in i.split('\n'):
+    #         if i == '':
+    #             break
+    #         # i = re.sub('\s+', ' ', i)
+    #         tes = {'kalimat' : i+'.'}
+    #         dict['kalimat ' + str(n)] = tes
+    #         n += 1
 
     # Filterisasi dan lower case
     print('filterisasi dan lower case')

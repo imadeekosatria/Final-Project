@@ -61,7 +61,7 @@ def overview(request, name):
     return render(request, 'overview.html', data)
 
 def pso_process(request):
-    if request.method == 'POST' and request.POST.get('mode') != 'comparison' and request.POST.get('testing_iteration') == None:
+    if request.method == 'POST' and request.POST.get('mode') != 'comparison' :
         start = time.perf_counter()
         title = request.POST.get('title')
         teks = request.POST.get('teks')
@@ -86,7 +86,7 @@ def pso_process(request):
         data = {'timelapsed': int(timelapsed),'title': request.POST.get('title'), 'summarization': summarization, 'js':'result.js', 'id':'result', 'iteration': summarization['iteration'], 'iteration_base': request.POST.get('iteration'),'particle':request.POST.get('population'), 'mode': request.POST.get('mode')}
         return render(request, 'result.html', data)
 
-    elif request.method == 'POST' and request.POST.get('mode') == 'comparison' and request.POST.get('testing_iteration') == None:
+    elif request.method == 'POST' and request.POST.get('mode') == 'comparison':
         #Text Processing 
         start_text_prep =time.perf_counter()
         title = request.POST.get('title')

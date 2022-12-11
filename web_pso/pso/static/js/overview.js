@@ -16,12 +16,14 @@ const close_research = document.getElementById('close_research');
 advance.addEventListener('click', () =>{
     link_advance.classList.add('switch_display');
     advanceMenu.classList.remove('switch_display');
+    linkTesting.classList.add('switch_display');
     submitBtn.style.bottom = '-1rem';
 });
 
 closeBtn.addEventListener('click', () =>{
     link_advance.classList.remove('switch_display');
     advanceMenu.classList.add('switch_display');
+    linkTesting.classList.remove('switch_display');
     submitBtn.style.bottom = '-4rem';
 });
 
