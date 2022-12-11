@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Berita, Ringkasan, Comparison
+from .models import Berita, Ringkasan, Comparison, Testing
 # Register your models here.
 
 
@@ -18,6 +18,10 @@ class ComparisonAdmin(admin.ModelAdmin):
     search_fields= ['judul']
     list_per_page= 10
 
+class TestingAdmin(admin.ModelAdmin):
+    list_display = ['judul', 'jsonfile','created']
+
 admin.site.register(Berita, BeritaAdmin)
 admin.site.register(Ringkasan, RingkasanAdmin)
 admin.site.register(Comparison, ComparisonAdmin)
+admin.site.register(Testing, TestingAdmin)

@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.core.files.storage import FileSystemStorage
-from .models import Berita, Ringkasan, Comparison
+from .models import Berita, Ringkasan, Comparison, Testing
 from pathlib import Path
 from .teks_processing import *
 from .pso import *
 from .pfnet import *
-import json
+import json, os
 # Create your views here.
 def index(request):
     content = {
@@ -185,63 +185,80 @@ def pso_process(request):
         summary = request.POST.get('summary')
         testing_iteration = int(request.POST.get('testing_iteration'))
         mode = request.POST.get('mode')
-
+        play_sound()
         text_preprocessing(text=teks, title=title, population=population, summary=summary)
 
         end_text_prep = time.perf_counter()
         text_prep_time = (end_text_prep - start_text_prep)
-
-        data = {'c1':c1, 'c2':c2, 'inertia':inertia, 'iteration':iteration,'text_prep_time':text_prep_time}
+        play_sound()
+        data = {'c1':c1, 'c2':c2, 'inertia':inertia, 'iteration':iteration,'text_prep_time':text_prep_time, 'name':title, 'populations': population}
 
         testing = testingMode(iteration=testing_iteration,mode=mode, data=data)
-
+        play_sound()
         return render(request, 'resultTesting.html', testing)
 
         # return JsonResponse(testing)
+
+def play_sound():
+    from playsound import playsound
+    alarm = ['Mina.wav', 'tzuyu 1.wav', 'tzuyu 2.wav', 'tzuyu 3.wav', 'tzuyu 4.wav', 'tzuyu 5.wav']
+    sound = random.choice(alarm)
+    playsound('pso/alarm/'+str(sound))
         
 def get_result_json(request, name):
+    berita = Testing.objects.get(judul=name)
     if request.method == 'GET':
-        f = open('pso/jsonfile/data pengujian/'+str(name)+'.json')
+        f = open(berita.jsonfile)
         data = json.load(f)
         f.close()
     return JsonResponse(data)
 
 def testingMode(iteration, mode, data):
     print("Mode Testing...\n")
-    from datetime import datetime
-    date =datetime.now()
-    name = date.date()
+    name = data['name']
     data_test = {}
     if mode == 'pso_only':
         data_test
         data_test['Mode']= 'PSO'
         data_test['iteration'] = data['iteration']
+        data_test['populations'] = data['populations']
         data_test['Uji']= testingProses(iteration=iteration, data=data, mode=mode, text_time=data['text_prep_time'])
-
-        with open('pso/jsonfile/data pengujian/'+str(name)+'.json', 'w') as json_file:
-            json.dump(data_test, json_file)
         
     elif mode == 'pso_pfnet':
+        pfnet()
         data_test['Mode'] ='PSO + PFNet'
         data_test['iteration'] = data['iteration']
+        data_test['populations'] = data['populations']
         data_test['Uji']=testingProses(iteration=iteration, data=data, mode=mode, text_time=data['text_prep_time'])
-
-        with open('pso/jsonfile/data pengujian/'+str(name)+'.json', 'w') as json_file:
-            json.dump(data_test, json_file)
-        
-        
+                
     elif mode == 'comparison':
         data_test['Mode'] = 'comparison'
         data_test['iteration'] = data['iteration']
-
-        data_test['Uji'] = {} 
+        data_test['populations'] = data['populations']
+        data_test['Uji'] = {}
+        print("Running PSO Testing") 
+        play_sound()
         data_test['Uji']['PSO'] = testingProses(iteration=iteration, data=data, mode='pso_only', text_time=data['text_prep_time'])
-        data_test['Uji']['PFNet'] =testingProses(iteration=iteration, data=data, mode='pso_pfnet', text_time=data['text_prep_time'])
-        with open('pso/jsonfile/data pengujian/'+str(name)+'.json', 'w') as json_file:
-            json.dump(data_test, json_file)
         
-    testing = {'id':'testing','name':name.strftime("%Y-%m-%d"),'testing':True,'js':'result.js'}
+        print("Running PFNet")
+        play_sound()
+        pfnet()
+        print("Running PSO + PFNet Testing") 
+        data_test['Uji']['PFNet'] =testingProses(iteration=iteration, data=data, mode='pso_pfnet', text_time=data['text_prep_time'])
+    
+    counter = 0
+    filename = 'pso/jsonfile/data pengujian/'+str(name)+'{}.json'
+    while os.path.isfile(filename):
+        counter += 1
+    filename = filename.format(counter)
 
+    with open(filename, 'w') as json_file:
+        json.dump(data_test, json_file)
+
+    dbTesting = Testing(judul=name, jsonfile=filename)
+    dbTesting.save()    
+
+    testing = {'id':'testing','name':name,'testing':True,'js':'result.js', 'mode': data_test['Mode'], 'iteration': data_test['iteration'], 'populations':data['populations']}
 
     return testing
 
@@ -253,6 +270,7 @@ def testingProses(iteration, data, mode, text_time):
     for i in range(iteration):
         print("Testing "+str(i+1))
         time.sleep(3)
+        play_sound()
         data_dict['test '+ str(i+1)] = {}
         start_pso = time.perf_counter()
         pso = PSO(c1=data['c1'], c2=data['c2'], inertia=data['inertia'], iteration=data['iteration'], mode=mode)
@@ -263,7 +281,10 @@ def testingProses(iteration, data, mode, text_time):
         data_dict['test '+ str(i+1)]['kalimat'] = result['final']
         data_dict['test '+ str(i+1)]['iteration finish'] = result['iteration']
         data_dict['test '+ str(i+1)]['timelapsed'] = int(timelapsed+text_time)
-        data_dict['test '+ str(i+1)]['gbest'] = result['gbest'] 
+        data_dict['test '+ str(i+1)]['gbest'] = result['gbest']
+        data_dict['test '+ str(i+1)]['total_sebelum'] = result['totalSebelum']
+        data_dict['test '+ str(i+1)]['total_sesudah'] = result['totalSesudah']
+                 
 
     return data_dict
 
@@ -276,12 +297,18 @@ def comparison(request):
     }
     return render(request, 'resultTesting.html', data)
 
-def resultTesting(request):
-    from datetime import datetime
+def resultTesting(request, name):
+    berita = Testing.objects.get(judul=name)
+    f = open(berita.jsonfile)
+    data_json = json.load(f)
+    f.close()
     data = {
         'id': 'testing',
         'testing': True,
-        'name': datetime.now().strftime("%Y-%m-%d"),
+        'name': name,
+        'mode': data_json['Mode'],
+        'iteration': data_json['iteration'],
+        'populations': data_json['populations'],
     }
 
     return render(request, 'resultTesting.html', data)

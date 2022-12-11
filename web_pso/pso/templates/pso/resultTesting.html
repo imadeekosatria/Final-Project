@@ -1,8 +1,24 @@
 {% extends 'template.html' %}
 {% block content %}
+<div>
+    <span>Judul : {{ name}}</span>
+    <span>Mode Testing : {{mode}}</span>
+    <span>Iteration : {{iteration}}</span>
+    <span>Populations : {{populations}}</span>
+</div>
 <div class="chart_container">
     <h2>Data Uji Coba Timelapsed (second)</h2>
     <span id="name" >{{name}}</span>
     <canvas id="myChart"></canvas>
+</div>
+<div class="chart_container">
+    <h2>Data Uji Coba Iterasi</h2>
+    <span id="name" >{{name}}</span>
+    <canvas id="iterasiChart"></canvas>
+</div>
+<div class="chart_container">
+    <h2>Data Uji Coba GBest</h2>
+    <span id="name" >{{name}}</span>
+    <canvas id="gbestChart"></canvas>
 </div>
 {% endblock content %}

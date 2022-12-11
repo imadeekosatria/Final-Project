@@ -48,21 +48,26 @@
             .then((dataJS)=> {
                 if (dataJS.Mode != 'comparison'){
                     const dataTimelapsed = [];
+                    const iteration =[]
+                    const gbest = [];
                     const datalabels = []; // Untuk horizontal labels
                     for (const key in dataJS.Uji) {
                         datalabels.push(key);
                         dataTimelapsed.push(dataJS.Uji[key].timelapsed);
+                        iteration.push(dataJS.Uji[key]['iteration finish']);
+                        gbest.push(dataJS.Uji[key].gbest);
                     }
+                    
+                    // console.log(labelData);
                     const data = {
                         labels: datalabels,
                         datasets: [{
-                        label: 'PSO',
-                        backgroundColor: 'rgba(207, 235, 255, 0.5)',
-                        borderColor: '#0E9CFF',
-                        data: dataTimelapsed, // Untuk vertical labels
-                        fill: true
-            
-                        },
+                            label: dataJS.Mode,
+                            backgroundColor: 'rgba(207, 235, 255, 0.5)',
+                            borderColor: '#0E9CFF',
+                            data: dataTimelapsed, // Untuk vertical labels
+                            fill: true
+                            },
                         ]
                     };
                     const config = {
@@ -76,7 +81,7 @@
                             },
                             title: {
                             display: false,
-                            text: (ctx) => 'Data Uji Coba Timelapsed'
+                            text: (ctx) => 'Data Uji Coba Timelapsed (second)'
                             }
                         },
                         interaction: {
@@ -101,12 +106,109 @@
                         document.getElementById('myChart'),
                         config
                     );
+                    
+                    
+
+                    // Iteration config
+                    const dataIteration = {
+                        labels: datalabels,
+                        datasets: [{
+                        label: dataJS.Mode,
+                        backgroundColor: 'rgba(207, 235, 255, 0.5)',
+                        borderColor: '#0E9CFF',
+                        data: iteration, // Untuk vertical labels
+                        fill: true
+            
+                        },
+                        ]
+                    };
+                    const configIteration = {
+                        type: 'line',
+                        data: dataIteration,
+                        options: {
+                            responsive: true,
+                            plugins: {
+                            filler: {
+                            propagate: true,
+                            },
+                            title: {
+                            display: false,
+                            text: (ctx) => 'Data Uji Coba Iteration'
+                            }
+                        },
+                        interaction: {
+                            intersect: false,
+                        },
+                        elements:{
+                            line:{
+                                tension: 0.4
+                            }
+                        },
+                        scales:{
+                            y:{
+                                min: 0,
+                                max: 1100,
+                            }
+                        }
+                        }
+                    };
+                    const iterasiChart = new Chart(document.getElementById('iterasiChart'), configIteration);
+
+                    // GBest config
+                    const dataGbest = {
+                        labels: datalabels,
+                        datasets: [{
+                        label: dataJS.Mode,
+                        backgroundColor: 'rgba(207, 235, 255, 0.5)',
+                        borderColor: '#0E9CFF',
+                        data: gbest, // Untuk vertical labels
+                        fill: true
+            
+                        },
+                        ]
+                    };
+                    const configGbest = {
+                        type: 'line',
+                        data: dataGbest,
+                        options: {
+                            responsive: true,
+                            plugins: {
+                            filler: {
+                            propagate: true,
+                            },
+                            title: {
+                            display: false,
+                            text: (ctx) => 'Data Uji Coba GBest'
+                            }
+                        },
+                        interaction: {
+                            intersect: false,
+                        },
+                        elements:{
+                            line:{
+                                tension: 0.4
+                            }
+                        },
+                        scales:{
+                            y:{
+                                min: 0,
+                                max: 20,
+                            }
+                        }
+                        }
+                    };
+                    const gbestChart = new Chart(document.getElementById('gbestChart'), configGbest);
                 }else if (dataJS.Mode == 'comparison'){
                     // console.log('Pass');
                     // const dataTimelapsed = [];
                     const datalabels = [];
                     const pso =[];
                     const pfnet = [];
+                    const psoIterations = [];
+                    const pfnetIterations = [];
+                    const psoGbest = [];
+                    const pfnetGbest = [];
+
                     for (k in dataJS.Uji){
                         if (k == 'PSO') {
                             for (t in dataJS.Uji[k]) {
@@ -114,12 +216,16 @@
                                     datalabels.push(t);
                                 }
                                 pso.push(dataJS.Uji[k][t].timelapsed);
+                                psoIterations.push(dataJS.Uji[k][t]['iteration finish']);
+                                psoGbest.push(dataJS.Uji[k][t].gbest);
                             }
-                            console.log(datalabels);
+                            // console.log(datalabels);
                             // console.log(pso);
                         }else if (k == 'PFNet'){
                             for (t in dataJS.Uji[k]) {
                                 pfnet.push(dataJS.Uji[k][t].timelapsed);
+                                pfnetIterations.push(dataJS.Uji[k][t]['iteration finish'])
+                                pfnetGbest.push(dataJS.Uji[k][t].gbest);
                             }
                             // console.log(pfnet);
                         }
@@ -181,10 +287,117 @@
                         document.getElementById('myChart'),
                         config
                     );
+
+                    // Iteration config
+                    const dataIteration = {
+                        labels: datalabels,
+                        datasets: [
+                            {
+                                label: 'PSO',
+                                backgroundColor: 'rgba(54, 162, 235, 0.4)',
+                                borderColor: '#0E9CFF',
+                                data: psoIterations, // Untuk vertical labels
+                                fill: true
+                            },
+                            {
+                                label: 'PSO + PFNet',
+                                backgroundColor: 'rgba(255, 99, 132, 0.4)',
+                                borderColor: '#e2777a',
+                                data: pfnetIterations, // Untuk vertical labels
+                                fill: true
+                            },
+                        ]
+                    };
+                    const configIteration = {
+                        type: 'line',
+                        data: dataIteration,
+                        options: {
+                            responsive: true,
+                            plugins: {
+                            filler: {
+                            propagate: true,
+                            },
+                            title: {
+                            display: false,
+                            text: (ctx) => 'Data Uji Coba Iteration'
+                            }
+                        },
+                        interaction: {
+                            intersect: false,
+                        },
+                        elements:{
+                            line:{
+                                tension: 0.4
+                            }
+                        },
+                        scales:{
+                            y:{
+                                min: 0,
+                                max: 1100,
+                            }
+                        }
+                        }
+                    };
+                    const iterasiChart = new Chart(document.getElementById('iterasiChart'), configIteration);
+
+                    // fitness config
+                    const dataFitness = {
+                        labels: datalabels,
+                        datasets: [
+                            {
+                                label: 'PSO',
+                                backgroundColor: 'rgba(54, 162, 235, 0.4)',
+                                borderColor: '#0E9CFF',
+                                data: psoGbest, // Untuk vertical labels
+                                fill: true
+                            },
+                            {
+                                label: 'PSO + PFNet',
+                                backgroundColor: 'rgba(255, 99, 132, 0.4)',
+                                borderColor: '#e2777a',
+                                data: pfnetGbest, // Untuk vertical labels
+                                fill: true
+                            },
+                        ]
+                    };
+                    const configFitness = {
+                        type: 'line',
+                        data: dataFitness,
+                        options: {
+                            responsive: true,
+                            plugins: {
+                            filler: {
+                            propagate: true,
+                            },
+                            title: {
+                            display: false,
+                            text: (ctx) => 'Data Uji Coba GBest'
+                            }
+                        },
+                        interaction: {
+                            intersect: false,
+                        },
+                        elements:{
+                            line:{
+                                tension: 0.4
+                            }
+                        },
+                        scales:{
+                            y:{
+                                min: 0,
+                                max: 30,
+                            }
+                        }
+                        }
+                    };
+                    const gbestChart = new Chart(document.getElementById('gbestChart'), configFitness);
+
                 }
+
                 // const max = dataTimelapsed.sort(function(a, b){return b - a});
                 // const new_max = max[0] + 10;
             });
+            window.open('https://www.youtube.com/watch?v=by4SYYWlhEs&ab_channel=YOASOBI-Topic', '_blank');
         </script>
     {% endif %}
     <script src="{% static 'js/'%}{{js}}"></script>

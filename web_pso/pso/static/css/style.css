@@ -633,7 +633,15 @@ section#testing{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 2rem;
 }
+section#testing div:first-child{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
 
 .chart_container{
     width: 50rem;

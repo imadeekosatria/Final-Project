@@ -4,126 +4,246 @@
   "Uji": {
     "PSO": {
       "test 1": {
-        "kalimat": [1, 2, 3, 4, 5, 9, 14, 19, 21],
-        "iteration finish": 57,
-        "timelapsed": 10,
-        "gbest": 13.468638120632747
+        "kalimat": [1, 4, 6, 7, 10, 11],
+        "iteration finish": 78,
+        "timelapsed": 27,
+        "gbest": 13.284634351356566
       },
       "test 2": {
-        "kalimat": [1, 2, 3, 4, 5, 9, 14, 19, 21],
-        "iteration finish": 33,
-        "timelapsed": 9,
-        "gbest": 13.468638120632747
+        "kalimat": [1, 2, 5, 11, 16, 47],
+        "iteration finish": 197,
+        "timelapsed": 33,
+        "gbest": 16.5282771845806
       },
       "test 3": {
-        "kalimat": [1, 2, 3, 4, 5, 9, 14, 15, 21],
-        "iteration finish": 22,
-        "timelapsed": 9,
-        "gbest": 13.364008264630842
+        "kalimat": [1, 2, 5, 10, 16, 24],
+        "iteration finish": 304,
+        "timelapsed": 36,
+        "gbest": 15.244579247378157
       },
       "test 4": {
-        "kalimat": [1, 2, 3, 4, 5, 9, 15, 19, 21],
-        "iteration finish": 328,
-        "timelapsed": 15,
-        "gbest": 13.416981133366766
+        "kalimat": [1, 2, 5, 6, 11, 16],
+        "iteration finish": 912,
+        "timelapsed": 58,
+        "gbest": 16.740383992429432
       },
       "test 5": {
-        "kalimat": [1, 2, 3, 4, 5, 9, 14, 15, 21],
-        "iteration finish": 41,
-        "timelapsed": 9,
-        "gbest": 13.364008264630842
+        "kalimat": [1, 2, 6, 11, 16, 53],
+        "iteration finish": 389,
+        "timelapsed": 38,
+        "gbest": 15.10294892438751
       },
       "test 6": {
-        "kalimat": [1, 2, 3, 4, 5, 9, 14, 19, 21],
-        "iteration finish": 308,
-        "timelapsed": 14,
-        "gbest": 13.468638120632747
+        "kalimat": [1, 2, 6, 11, 16, 19],
+        "iteration finish": 73,
+        "timelapsed": 26,
+        "gbest": 15.022858698387921
       },
       "test 7": {
-        "kalimat": [1, 2, 3, 4, 5, 9, 15, 19, 21],
-        "iteration finish": 163,
-        "timelapsed": 12,
-        "gbest": 13.416981133366766
+        "kalimat": [1, 2, 11, 16, 20, 48],
+        "iteration finish": 312,
+        "timelapsed": 36,
+        "gbest": 14.826657381762015
       },
       "test 8": {
-        "kalimat": [1, 2, 3, 4, 5, 9, 14, 15, 21],
-        "iteration finish": 23,
-        "timelapsed": 9,
-        "gbest": 13.364008264630844
+        "kalimat": [1, 4, 6, 7, 10, 11],
+        "iteration finish": 999,
+        "timelapsed": 61,
+        "gbest": 13.284634351356566
       },
       "test 9": {
-        "kalimat": [1, 2, 3, 4, 5, 9, 14, 15, 21],
-        "iteration finish": 55,
-        "timelapsed": 10,
-        "gbest": 13.364008264630842
+        "kalimat": [1, 4, 7, 8, 10, 11],
+        "iteration finish": 384,
+        "timelapsed": 41,
+        "gbest": 13.288065137356135
       },
       "test 10": {
-        "kalimat": [1, 2, 3, 4, 5, 14, 15, 19, 21],
-        "iteration finish": 744,
-        "timelapsed": 22,
-        "gbest": 13.384455480116488
+        "kalimat": [1, 2, 4, 16, 47, 48],
+        "iteration finish": 160,
+        "timelapsed": 30,
+        "gbest": 14.093091648153516
+      },
+      "test 11": {
+        "kalimat": [1, 2, 4, 5, 16, 47],
+        "iteration finish": 283,
+        "timelapsed": 36,
+        "gbest": 15.665083756645863
+      },
+      "test 12": {
+        "kalimat": [1, 2, 7, 10, 11, 16],
+        "iteration finish": 178,
+        "timelapsed": 31,
+        "gbest": 14.350916620453473
+      },
+      "test 13": {
+        "kalimat": [1, 2, 5, 6, 11, 38],
+        "iteration finish": 999,
+        "timelapsed": 63,
+        "gbest": 15.293922071003983
+      },
+      "test 14": {
+        "kalimat": [1, 2, 5, 11, 16, 47],
+        "iteration finish": 999,
+        "timelapsed": 62,
+        "gbest": 16.5282771845806
+      },
+      "test 15": {
+        "kalimat": [8, 10, 12, 13, 14, 15],
+        "iteration finish": 446,
+        "timelapsed": 41,
+        "gbest": 13.283900236948933
+      },
+      "test 16": {
+        "kalimat": [1, 2, 5, 6, 11, 16],
+        "iteration finish": 695,
+        "timelapsed": 50,
+        "gbest": 16.740383992429432
+      },
+      "test 17": {
+        "kalimat": [1, 2, 7, 11, 16, 47],
+        "iteration finish": 999,
+        "timelapsed": 64,
+        "gbest": 14.66513948422434
+      },
+      "test 18": {
+        "kalimat": [1, 2, 5, 6, 11, 47],
+        "iteration finish": 959,
+        "timelapsed": 60,
+        "gbest": 15.37667833304042
+      },
+      "test 19": {
+        "kalimat": [1, 2, 5, 11, 16, 24],
+        "iteration finish": 552,
+        "timelapsed": 46,
+        "gbest": 16.408155809837993
+      },
+      "test 20": {
+        "kalimat": [1, 2, 4, 5, 16, 18],
+        "iteration finish": 136,
+        "timelapsed": 29,
+        "gbest": 15.470704061401324
       }
     },
     "PFNet": {
       "test 1": {
-        "kalimat": [1, 2, 3, 4, 5, 13, 14, 19, 21],
-        "iteration finish": 561,
-        "timelapsed": 19,
-        "gbest": 13.308797932778596
+        "kalimat": [1, 2, 4, 5, 16, 19],
+        "iteration finish": 125,
+        "timelapsed": 29,
+        "gbest": 15.44017556961181
       },
       "test 2": {
-        "kalimat": [1, 2, 3, 4, 5, 9, 13, 14, 21],
-        "iteration finish": 35,
-        "timelapsed": 9,
-        "gbest": 13.28835071729295
+        "kalimat": [1, 2, 5, 10, 11, 16],
+        "iteration finish": 154,
+        "timelapsed": 30,
+        "gbest": 13.96220372572285
       },
       "test 3": {
-        "kalimat": [1, 2, 3, 4, 5, 9, 14, 19, 21],
-        "iteration finish": 209,
-        "timelapsed": 13,
-        "gbest": 13.468638120632747
+        "kalimat": [4, 7, 12, 13, 15, 56],
+        "iteration finish": 310,
+        "timelapsed": 36,
+        "gbest": 12.360739657544572
       },
       "test 4": {
-        "kalimat": [1, 2, 3, 4, 5, 9, 13, 14, 21],
-        "iteration finish": 29,
-        "timelapsed": 9,
-        "gbest": 13.28835071729295
+        "kalimat": [1, 2, 3, 5, 16, 25],
+        "iteration finish": 999,
+        "timelapsed": 66,
+        "gbest": 14.04006683351698
       },
       "test 5": {
-        "kalimat": [1, 2, 3, 4, 5, 9, 14, 19, 21],
-        "iteration finish": 78,
-        "timelapsed": 10,
-        "gbest": 13.468638120632747
+        "kalimat": [1, 2, 5, 11, 16, 47],
+        "iteration finish": 614,
+        "timelapsed": 49,
+        "gbest": 16.5282771845806
       },
       "test 6": {
-        "kalimat": [1, 2, 3, 4, 5, 14, 15, 19, 21],
-        "iteration finish": 24,
-        "timelapsed": 9,
-        "gbest": 13.384455480116488
+        "kalimat": [4, 7, 8, 9, 12, 44],
+        "iteration finish": 133,
+        "timelapsed": 31,
+        "gbest": 12.692884328343975
       },
       "test 7": {
-        "kalimat": [1, 2, 3, 4, 5, 9, 17, 19, 21],
-        "iteration finish": 999,
-        "timelapsed": 28,
-        "gbest": 13.406344855311522
+        "kalimat": [1, 2, 6, 11, 13, 38],
+        "iteration finish": 38,
+        "timelapsed": 25,
+        "gbest": 12.776547274225555
       },
       "test 8": {
-        "kalimat": [1, 2, 3, 4, 5, 9, 17, 19, 21],
-        "iteration finish": 219,
-        "timelapsed": 13,
-        "gbest": 13.406344855311522
+        "kalimat": [4, 7, 8, 9, 10, 11],
+        "iteration finish": 137,
+        "timelapsed": 31,
+        "gbest": 12.985544351421495
       },
       "test 9": {
-        "kalimat": [1, 2, 3, 4, 5, 9, 14, 19, 21],
-        "iteration finish": 724,
-        "timelapsed": 22,
-        "gbest": 13.468638120632747
+        "kalimat": [4, 7, 8, 9, 11, 51],
+        "iteration finish": 171,
+        "timelapsed": 31,
+        "gbest": 12.676576787929054
       },
       "test 10": {
-        "kalimat": [1, 2, 3, 4, 5, 9, 14, 19, 21],
-        "iteration finish": 32,
-        "timelapsed": 9,
-        "gbest": 13.468638120632747
+        "kalimat": [1, 2, 5, 7, 16, 17],
+        "iteration finish": 999,
+        "timelapsed": 74,
+        "gbest": 15.460530984598279
+      },
+      "test 11": {
+        "kalimat": [1, 2, 4, 7, 8, 11],
+        "iteration finish": 999,
+        "timelapsed": 73,
+        "gbest": 13.030013046424482
+      },
+      "test 12": {
+        "kalimat": [1, 2, 4, 5, 6, 11],
+        "iteration finish": 590,
+        "timelapsed": 53,
+        "gbest": 15.306540874216719
+      },
+      "test 13": {
+        "kalimat": [1, 2, 7, 9, 11, 16],
+        "iteration finish": 240,
+        "timelapsed": 34,
+        "gbest": 13.30280294363707
+      },
+      "test 14": {
+        "kalimat": [4, 6, 7, 8, 9, 11],
+        "iteration finish": 322,
+        "timelapsed": 35,
+        "gbest": 12.700135279831674
+      },
+      "test 15": {
+        "kalimat": [4, 7, 8, 9, 10, 11],
+        "iteration finish": 121,
+        "timelapsed": 28,
+        "gbest": 12.985544351421494
+      },
+      "test 16": {
+        "kalimat": [4, 7, 8, 9, 10, 11],
+        "iteration finish": 205,
+        "timelapsed": 31,
+        "gbest": 12.985544351421494
+      },
+      "test 17": {
+        "kalimat": [1, 2, 5, 11, 16, 47],
+        "iteration finish": 298,
+        "timelapsed": 35,
+        "gbest": 16.5282771845806
+      },
+      "test 18": {
+        "kalimat": [4, 7, 8, 9, 10, 53],
+        "iteration finish": 390,
+        "timelapsed": 37,
+        "gbest": 12.861317679365882
+      },
+      "test 19": {
+        "kalimat": [1, 2, 11, 16, 47, 48],
+        "iteration finish": 65,
+        "timelapsed": 26,
+        "gbest": 14.956285076088252
+      },
+      "test 20": {
+        "kalimat": [1, 2, 6, 7, 13, 47],
+        "iteration finish": 87,
+        "timelapsed": 27,
+        "gbest": 11.972082889370471
       }
     }
   }

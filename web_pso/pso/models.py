@@ -57,3 +57,11 @@ class Comparison(models.Model):
 
     def __str__(self):
         return str(self.judul)
+
+class Testing(models.Model):
+    judul = models.CharField(max_length=255, verbose_name='Berita')
+    jsonfile = models.CharField(max_length=255, verbose_name='JSON File')
+    created = models.DateTimeField(auto_now_add=True, verbose_name='Date')
+
+    def __str__(self):
+        return str(self.judul)
