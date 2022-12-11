@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"rel="stylesheet">
+    <title>Peringkasan Teks menggunakan PSO dan PFNet</title>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="#"><h2>PSO SUMMARIZATION</h2></a>
+            </div>
+            <div class="nav_item">
+                <ul>
+                    <li class="active"><a href="home">Home</a></li>
+                    <li><a href="about">About</a></li>
+                    <li><a href="history">History</a></li>
+                    <li><a href="admin">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+    
+        <section id="testing">
+            <div class="chart_container">
+                <h2>Data Uji Coba Timelapsed</h2>
+                <span id="name" >2022-12-11</span>
+                <canvas id="myChart"></canvas>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <img src="./images/wave (1).svg" alt="wave">
+    </footer>
+    <script src="./js/result.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.js"></script>
+    <script>
+            const nameJS = document.getElementById('name');
+
+            const api_url = 'http://127.0.0.1:8000/get_result_json/'+nameJS.innerHTML;
+            
+            // const min = dataTimelapsed.sort(function(a, b){return a - b});
+            fetch(api_url)
+            .then((response) => response.json())
+            .then((dataJS)=> {
+                const dataTimelapsed = []
+                const datalabels = []; // Untuk horizontal labels
+                for (const key in dataJS.Uji) {
+                    datalabels.push(key);
+                    dataTimelapsed.push(dataJS.Uji[key].timelapsed);
+                }
+                const data = {
+                    labels: datalabels,
+                    datasets: [{
+                    label: 'PSO',
+                    backgroundColor: 'rgba(207, 235, 255, 0.5)',
+                    borderColor: '#0E9CFF',
+                    data: dataTimelapsed, // Untuk vertical labels
+                    fill: true
+        
+                    }]
+                };
+                // const max = dataTimelapsed.sort(function(a, b){return b - a});
+                // const new_max = max[0] + 10;
+                const config = {
+                    type: 'line',
+                    data: data,
+                    options: {
+                        responsive: true,
+                        plugins: {
+                        filler: {
+                        propagate: true,
+                        },
+                        title: {
+                        display: false,
+                        text: (ctx) => 'Data Uji Coba Timelapsed'
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                    },
+                    elements:{
+                        line:{
+                            tension: 0.4
+                        }
+                    },
+                    scales:{
+                        y:{
+                            min: 0,
+                            max: 100,
+                        }
+                    }
+                    }
+                };
+        
+                
+                const myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+            });     
+    </script>
+</body>
+</html>

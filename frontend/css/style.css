@@ -533,3 +533,18 @@ section#result .result_wrapper .config div span{
 .container section#overview .mode span#mode_close:hover{
     color: var(--color-accent);
 }
+
+section#testing{
+    height: 10rem;
+}
+
+.chart_container{
+    width: 50rem;
+    /* height: 10rem; */
+    background-color: var(--background-field);
+    border-radius: 15px;
+    margin-top: 1rem;
+    padding: 1rem;
+    box-shadow: var(--box-shadow);
+}
+
