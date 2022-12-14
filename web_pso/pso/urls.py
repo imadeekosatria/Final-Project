@@ -13,8 +13,8 @@ urlpatterns = [
     path('overview/<str:name>', views.overview, name='overview'),
     path('pso_process/', views.pso_process, name='pso_process'),
     path('comparison', views.comparison, name='comparison'),
-    path('get_result_json/<str:name>', views.get_result_json, name='get_result_json'),
-    path('resultTesting/<str:name>', views.resultTesting, name='resultTesting'),
+    path('get_result_json/<int:id>', views.get_result_json, name='get_result_json'),
+    path('resultTesting/<str:judul>/<int:id>', views.resultTesting, name='resultTesting'),
 ]
 
 if settings.DEBUG:

@@ -7,6 +7,7 @@ from .teks_processing import *
 from .pso import *
 from .pfnet import *
 import json, os
+from datetime import datetime
 # Create your views here.
 def index(request):
     content = {
@@ -29,8 +30,9 @@ def file_upload(request):
         # fs = FileSystemStorage()
         # filename = fs.save(myfile.name, myfile)
         # uploaded_file_url = fs.url(filename)
-        filedb = Berita(judul=myfile.name, teks=myfile.read().decode('utf-8'), file=myfile)
-        filedb.save()
+        if not Berita.objects.filter(judul=myfile.name).exists():
+            filedb = Berita(judul=myfile.name, teks=myfile.read().decode('utf-8'), file=myfile)
+            filedb.save()
         
         
         # return render(request, 'index.html', {
@@ -42,11 +44,13 @@ def manual(request):
     if request.method == 'POST' and request.POST.get('title'):
         filename = request.POST.get('title')
         text = request.POST.get('teks')
-        file = open('pso/berita/'+str(filename)+'.txt', 'w+', encoding='utf-8')
-        file.write(text)
-        file.close()
-        filedb = Berita(judul=str(filename)+'.txt', teks = text, file=str(filename)+'.txt')
-        filedb.save()
+        str_file = str(filename)+'.txt'
+        if not Berita.objects.filter(judul=str_file):
+            filedb = Berita(judul=str(filename)+'.txt', teks = text, file=str(filename)+'.txt')
+            filedb.save()
+            file = open('pso/berita/'+str(filename)+'.txt', 'w+', encoding='utf-8')
+            file.write(text)
+            file.close()
         return redirect('overview/'+str(filename)+'.txt')
 
 
@@ -61,7 +65,7 @@ def overview(request, name):
     return render(request, 'overview.html', data)
 
 def pso_process(request):
-    if request.method == 'POST' and request.POST.get('mode') != 'comparison' :
+    if request.method == 'POST' and request.POST.get('mode') != 'comparison' and not request.POST.get('testing_iteration'):
         start = time.perf_counter()
         title = request.POST.get('title')
         teks = request.POST.get('teks')
@@ -86,7 +90,7 @@ def pso_process(request):
         data = {'timelapsed': int(timelapsed),'title': request.POST.get('title'), 'summarization': summarization, 'js':'result.js', 'id':'result', 'iteration': summarization['iteration'], 'iteration_base': request.POST.get('iteration'),'particle':request.POST.get('population'), 'mode': request.POST.get('mode')}
         return render(request, 'result.html', data)
 
-    elif request.method == 'POST' and request.POST.get('mode') == 'comparison':
+    elif request.method == 'POST' and request.POST.get('mode') == 'comparison' and not request.POST.get('testing_iteration'):
         #Text Processing 
         start_text_prep =time.perf_counter()
         title = request.POST.get('title')
@@ -177,14 +181,14 @@ def pso_process(request):
         start_text_prep =time.perf_counter()
         title = request.POST.get('title')
         teks = request.POST.get('teks')
-        c1 = request.POST.get('c1')
-        c2 = request.POST.get('c2')
-        iteration = request.POST.get('iteration')
-        inertia = request.POST.get('inertia')
-        population = request.POST.get('population')
-        summary = request.POST.get('summary')
+        c1 = request.POST.get('research_c1')
+        c2 = request.POST.get('research_c2')
+        iteration = request.POST.get('research_iteration')
+        inertia = request.POST.get('research_inertia')
+        population = request.POST.get('research_population')
+        summary = request.POST.get('research_summary')
         testing_iteration = int(request.POST.get('testing_iteration'))
-        mode = request.POST.get('mode')
+        mode = request.POST.get('research_mode')
         play_sound()
         text_preprocessing(text=teks, title=title, population=population, summary=summary)
 
@@ -205,12 +209,10 @@ def play_sound():
     sound = random.choice(alarm)
     playsound('pso/alarm/'+str(sound))
         
-def get_result_json(request, name):
-    berita = Testing.objects.get(judul=name)
-    if request.method == 'GET':
-        f = open(berita.jsonfile)
-        data = json.load(f)
-        f.close()
+def get_result_json(request, id):
+    berita = Testing.objects.get(pk=id)
+    # print(berita)
+    data = berita.data_json
     return JsonResponse(data)
 
 def testingMode(iteration, mode, data):
@@ -218,10 +220,10 @@ def testingMode(iteration, mode, data):
     name = data['name']
     data_test = {}
     if mode == 'pso_only':
-        data_test
         data_test['Mode']= 'PSO'
         data_test['iteration'] = data['iteration']
         data_test['populations'] = data['populations']
+        data_test['time'] = datetime.now().strftime('%d %B %Y %H:%M:%S')
         data_test['Uji']= testingProses(iteration=iteration, data=data, mode=mode, text_time=data['text_prep_time'])
         
     elif mode == 'pso_pfnet':
@@ -229,12 +231,14 @@ def testingMode(iteration, mode, data):
         data_test['Mode'] ='PSO + PFNet'
         data_test['iteration'] = data['iteration']
         data_test['populations'] = data['populations']
+        data_test['time'] = datetime.now().strftime('%d %B %Y %H:%M:%S')
         data_test['Uji']=testingProses(iteration=iteration, data=data, mode=mode, text_time=data['text_prep_time'])
                 
     elif mode == 'comparison':
         data_test['Mode'] = 'comparison'
         data_test['iteration'] = data['iteration']
         data_test['populations'] = data['populations']
+        data_test['time'] = datetime.now().strftime('%d %B %Y %H:%M:%S')
         data_test['Uji'] = {}
         print("Running PSO Testing") 
         play_sound()
@@ -246,19 +250,14 @@ def testingMode(iteration, mode, data):
         print("Running PSO + PFNet Testing") 
         data_test['Uji']['PFNet'] =testingProses(iteration=iteration, data=data, mode='pso_pfnet', text_time=data['text_prep_time'])
     
-    counter = 0
-    filename = 'pso/jsonfile/data pengujian/'+str(name)+'{}.json'
-    while os.path.isfile(filename):
-        counter += 1
-    filename = filename.format(counter)
+    now = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
+    # now = datetime.now()
 
-    with open(filename, 'w') as json_file:
-        json.dump(data_test, json_file)
+    dbTesting = Testing(judul=name, data_json=data_test)
+    dbTesting.save()
+    id_testing = dbTesting.id    
 
-    dbTesting = Testing(judul=name, jsonfile=filename)
-    dbTesting.save()    
-
-    testing = {'id':'testing','name':name,'testing':True,'js':'result.js', 'mode': data_test['Mode'], 'iteration': data_test['iteration'], 'populations':data['populations']}
+    testing = {'id':'testing','name':name,'testing':True,'js':'result.js', 'mode': data_test['Mode'], 'iteration': data_test['iteration'], 'populations':data['populations'], 'time':now, 'id_testing':id_testing}
 
     return testing
 
@@ -297,18 +296,49 @@ def comparison(request):
     }
     return render(request, 'resultTesting.html', data)
 
-def resultTesting(request, name):
-    berita = Testing.objects.get(judul=name)
-    f = open(berita.jsonfile)
-    data_json = json.load(f)
-    f.close()
+def resultTesting(request, judul, id):
+    berita = Testing.objects.get(pk=id)
+    # batas = [20, 30, 40, 50, 60, 70, 80, 90, 100]
+    # # print(berita)
+    # if berita.data_json['Mode'] == 'comparison':
+    #     pfnet_time = []
+    #     pfnet_iteration = []
+    #     pfnet_gbest = []
+    #     for test in berita.data_json['Uji']['PFNet']:
+    #         pfnet_time.append(berita.data_json['Uji']['PFNet'][test]['timelapsed'])
+    #         pfnet_iteration.append(berita.data_json['Uji']['PFNet'][test]['iteration finish'])
+    #         pfnet_gbest.append(berita.data_json['Uji']['PFNet'][test]['gbest'])
+    #     max_time_pfnet = max(pfnet_time)
+    #     max_iteration_pfnet =max(pfnet_iteration)
+    #     max_gbest_pfnet = max(pfnet_gbest)
+
+    #     pso_time =[]
+    #     pso_iteration =[]
+    #     pso_gbest =[]
+    #     for test in berita.data_json['Uji']['PSO']:
+    #         pso_time.append(berita.data_json['Uji']['PSO'][test]['timelapsed'])
+    #         pso_iteration.append(berita.data_json['Uji']['PFNet'][test]['iteration finish'])
+    #         pso_gbest.append(berita.data_json['Uji']['PFNet'][test]['gbest'])
+    #     max_time_pso = max(pso_time)
+    #     max_iteration_pso =max(pso_iteration)
+    #     max_gbest_pso = max(pso_gbest)
+
+    #     done = False
+    #     while done == False:
+    #         for b in batas:
+    #             if b > max_time_pso and b > max_time_pfnet:
+    #                 batas_time = b
+    #             if b > max_iteration_pso
     data = {
         'id': 'testing',
         'testing': True,
-        'name': name,
-        'mode': data_json['Mode'],
-        'iteration': data_json['iteration'],
-        'populations': data_json['populations'],
+        'name': judul,
+        'mode': berita.data_json['Mode'],
+        'iteration': berita.data_json['iteration'],
+        'populations': berita.data_json['populations'],
+        'id_testing': id,
+        # 'json': berita.data_json,
+        # 'batas_time': batas_time
     }
 
     return render(request, 'resultTesting.html', data)

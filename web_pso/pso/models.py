@@ -60,7 +60,7 @@ class Comparison(models.Model):
 
 class Testing(models.Model):
     judul = models.CharField(max_length=255, verbose_name='Berita')
-    jsonfile = models.CharField(max_length=255, verbose_name='JSON File')
+    data_json = models.JSONField(verbose_name='JSON', null=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name='Date')
 
     def __str__(self):

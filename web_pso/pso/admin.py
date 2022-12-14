@@ -19,7 +19,7 @@ class ComparisonAdmin(admin.ModelAdmin):
     list_per_page= 10
 
 class TestingAdmin(admin.ModelAdmin):
-    list_display = ['judul', 'jsonfile','created']
+    list_display = ['judul', 'data_json','created']
 
 admin.site.register(Berita, BeritaAdmin)
 admin.site.register(Ringkasan, RingkasanAdmin)

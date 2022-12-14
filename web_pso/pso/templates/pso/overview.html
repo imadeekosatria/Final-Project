@@ -86,16 +86,16 @@
         <div class="basic">
           <h3>Basic</h3>
           <div>
-            <label for="population">populations</label>
-            <input type="number" name="population" id="population" value="25" />
+            <label for="research_population">populations</label>
+            <input type="number" name="research_population" id="research_population" value="25" />
           </div>
           <div>
-            <label for="iteration">Iteration</label>
-            <input type="number" name="iteration" id="iteration" value="1000"/>
+            <label for="research_iteration">Iteration</label>
+            <input type="number" name="research_iteration" id="research_iteration" value="1000"/>
           </div>
           <div>
-            <label for="summary">Summary</label>
-            <input type="number" name="summary" id="summary" value="40"/>
+            <label for="research_iteration">Summary</label>
+            <input type="number" name="research_summary" id="research_summary" value="40"/>
             <span>%</span>
           </div>
         </div>
@@ -103,17 +103,17 @@
         <div class="pso">
           <h3>PSO</h3>
           <div>
-            <label for="c1">C1</label>
-            <input type="number" name="c1" id="c1" min="1" value="2" />
+            <label for="research_c1">C1</label>
+            <input type="number" name="research_c1" id="research_c1" min="1" value="2" />
           </div>
           <div>
-            <label for="c2">C2</label>
-            <input type="number" name="c2" id="c2" min="1" value="2" />
+            <label for="research_c2">C2</label>
+            <input type="number" name="research_c2" id="research_c2" min="1" value="2" />
           </div>
           <div>
-            <label for="inertia">Inertia</label>
+            <label for="research_inertia">Inertia</label>
             <input
-              type="number" name="inertia" id="inertia" min="0.1" max="0.9" step="0.1" value="0.1"/>
+              type="number" name="research_inertia" id="research_inertia" min="0.1" max="0.9" step="0.1" value="0.1"/>
             <span>* inertia between [0.1 - 0.9]</span>
           </div>
         </div>
@@ -121,16 +121,16 @@
         <div class="mode">
           <h3>Mode</h3>
           <div>
-            <input type="radio" name="mode" id="pso_only" value="pso_only" checked />
-            <label for="pso_only">PSO Only</label>
+            <input type="radio" name="research_mode" id="research_pso_only" value="pso_only" checked />
+            <label for="research_pso_only">PSO Only</label>
           </div>
           <div>
-            <input type="radio" name="mode" id="pso_pfnet" value="pso_pfnet" />
-            <label for="pso_pfnet">PSO + PFNet</label>
+            <input type="radio" name="research_mode" id="research_pso_pfnet" value="pso_pfnet" />
+            <label for="research_pso_pfnet">PSO + PFNet</label>
           </div>
           <div>
-            <input type="radio" name="mode" id="comparison" value="comparison" />
-            <label for="comparison">Comparison</label>
+            <input type="radio" name="research_mode" id="research_comparison" value="comparison" />
+            <label for="research_comparison">Comparison</label>
           </div>
         </div>
         <div id="h3testing">

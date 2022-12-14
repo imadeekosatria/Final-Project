@@ -15,18 +15,18 @@ def text_preprocessing(text, title, population, summary):
     for sentence in range(len(segment_sentence)):
         dict['kalimat '+str(sentence+1)] = {}
         dict['kalimat '+str(sentence+1)]['kalimat'] = segment_sentence[sentence]
-# print(dict)
-    # print('Segmentasi')
-    # dict = {}
-    # n = 1
-    # for i in new_text.split('. '):
-    #     for k in i.split('\n'):
-    #         if i == '':
-    #             break
-    #         # i = re.sub('\s+', ' ', i)
-    #         tes = {'kalimat' : i+'.'}
-    #         dict['kalimat ' + str(n)] = tes
-    #         n += 1
+    # print(dict)
+        # print('Segmentasi')
+        # dict = {}
+        # n = 1
+        # for i in new_text.split('. '):
+        #     for k in i.split('\n'):
+        #         if i == '':
+        #             break
+        #         # i = re.sub('\s+', ' ', i)
+        #         tes = {'kalimat' : i+'.'}
+        #         dict['kalimat ' + str(n)] = tes
+        #         n += 1
 
     # Filterisasi dan lower case
     print('filterisasi dan lower case')
@@ -300,7 +300,7 @@ def text_preprocessing(text, title, population, summary):
     for i in range(int(population)):
         # print('Loop ',i)
         jalur = []
-        while len(jalur) != math.ceil(len(vertex)*int(summary)/100): # <--- len(vertex)*2/10 atau int 4
+        while len(jalur) != math.ceil(len(vertex)*int(summary)/100): # <--- len(vertex)*int(summary)/100
             r = random.choice(vertex)
             if r not in jalur:
                 jalur.append(r)
