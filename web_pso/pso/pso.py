@@ -64,7 +64,7 @@ class PSO():
         for i in posisi:
             iscore = self.info['kalimat ' + str(i)] # Ambil Iscore
             sum = 0
-            for d in posisi[1:3]: # Ambil cosine_similarity
+            for d in posisi[1:-1]: # Ambil cosine_similarity
                 if d == i:
                     cos = 1 # posisi sama
                 else:
