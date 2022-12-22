@@ -300,7 +300,7 @@ def text_preprocessing(text, title, population, summary):
     for i in range(int(population)):
         # print('Loop ',i)
         jalur = []
-        while len(jalur) != math.ceil(len(vertex)*int(summary)/100): # <--- len(vertex)*int(summary)/100
+        while len(jalur) != math.ceil(int(summary)): # <--- len(vertex)*int(summary)/100
             r = random.choice(vertex)
             if r not in jalur:
                 jalur.append(r)

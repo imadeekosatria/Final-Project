@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/><title>{{title}}</title>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="#"><h2>PSO SUMMARIZATION</h2></a>
+            </div>
+            <div class="nav_item">
+                <ul>
+                    <li class="{% if id == 'home' %}active{% endif %}"><a href="/">Home</a></li>
+                    <li class="{% if id == 'about' %}active{% endif %}"><a href="/about">About</a></li>
+                    {% comment %} <li><a href="/history">History</a></li> {% endcomment %}
+                    <li><a href="/admin">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+    
+        <section id="about">
+            <div class="intro">
+                <img src="{% static 'images/undraw_documents_re_isxv.svg' %}" alt="" id="image_about">
+                <div>
+                    <h1 id="title_about">PSO SUMMARIZATION</h1>
+                    <p id="about_desc">is a method to summary text using Particle Swarm Optimization algorithm. </p>
+                    <div id="first"></div>
+                    <div id="second"></div>
+                    <div id="third"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="easy">
+        <h1 id="easy_use">Easy to Use</h1>
+        <div class="easy_list">
+            <div>
+                <img src="{% static 'images/undraw_publish_article_re_3x8h.svg' %}" alt="">
+                <span>Input Text</span>
+            </div>
+            <span class="material-icons-outlined">arrow_forward</span>
+            <div>
+                <img src="{% static 'images/undraw_thought_process_re_om58 (1).svg' %}" alt="">
+                <span>Process</span>
+            </div>
+            <span class="material-icons-outlined">arrow_forward</span>
+            <div>
+                <img src="{% static 'images/undraw_my_documents_re_13dc.svg' %}" alt="">
+                <span>Done 👍</span>
+            </div>
+        </div>
+    </div>
+    <div class="feature">
+        <h1>Behind the App</h1>
+        <span>Using five feature to create summary</span>
+        <img src="{% static 'images/undraw_product_iteration_kjok.svg' %}" alt="">
+        <div class="list_feature">
+            <div class="context animate__animated animate__fadeInUp">
+                <p id="feature">Checking each sentence similarity with <b>Title</b>. Calculate how many times <b>word in Title</b> shown in <b>each sentence</b>.</p>
+            </div>
+            <div class="feature_btn">
+                <li class="clicked_feature" id="1">
+                    <span class="material-icons-outlined">play_circle_outline</span>
+                    <span>Sentence similarity with title</span>
+                </li>
+                <li id="2">
+                    <span class="material-icons-outlined">play_circle_outline</span>
+                    <span>Length sentence</span>
+                </li>
+                <li id="3">
+                    <span class="material-icons-outlined">play_circle_outline</span>
+                    <span>Sentence Position</span>
+                </li>
+                <li id="4">
+                    <span class="material-icons-outlined">play_circle_outline</span>
+                    <span>TF-IDF</span>
+                </li>
+                <li id="5">
+                    <span class="material-icons-outlined">play_circle_outline</span>
+                    <span>Cosine Similarity</span>
+                </li>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="credits"></div> -->
+    <footer>
+        <img src="{% static 'images/wave (1).svg'%}" alt="wave">
+    </footer>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="{% static 'js/about.js'%}"></script>
+
+</body>
+</html>

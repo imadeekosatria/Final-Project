@@ -7,6 +7,7 @@ from django.contrib import admin
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('about', views.about, name='about'),
     # path('', views.file_upload, name='file_upload'),
     path('upload', views.file_upload, name='file_upload'),
     path('upload_manual', views.manual, name='manual'),

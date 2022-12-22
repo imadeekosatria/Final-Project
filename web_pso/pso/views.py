@@ -18,6 +18,11 @@ def index(request):
     
     return render(request, 'index.html', content)
 
+def about(request):
+    content = {'title' : 'Peringkasan Teks menggunakan PSO dan PFNet',
+        'id': 'about',}
+    return render(request, 'about.html', content)
+
 def handle_uploaded_file(f):
     with open('some/file/name.txt', 'wb+') as destination:
         for chunk in f.chunks():
@@ -56,10 +61,12 @@ def manual(request):
 
 def overview(request, name):
     t = Berita.objects.get(judul=name)
-    f = open('pso/berita/'+str(t.file), encoding='utf-8')
-    text = f.read()
-    title = Path(name).stem
-    f.close()
+    # f = open('pso/berita/'+str(t.file), encoding='utf-8')
+    # text = f.read()
+    text = t.teks
+    # title = Path(name).stem
+    title = Path(t.judul).stem
+    # f.close()
     # text_preprocessing(text, title)
     data = {'title': title, 'teks': text, 'js': 'overview.js', 'id': 'overview'}
     return render(request, 'overview.html', data)
