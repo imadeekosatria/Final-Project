@@ -220,6 +220,8 @@ def get_result_json(request, id):
     berita = Testing.objects.get(pk=id)
     # print(berita)
     data = berita.data_json
+    with open('pso/jsonfile/data testing.json', 'w') as json_file:
+        json.dump(data, json_file)
     return JsonResponse(data)
 
 def testingMode(iteration, mode, data):
