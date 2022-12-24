@@ -145,7 +145,7 @@ class PSO():
         gbest = 0
         final = []
         for it in range(self.iteration):
-            print(it)
+            # print(it)
             total_fitness = []
             for p in self.swarm:
                 posisi = self.swarm[p]['posisi']
