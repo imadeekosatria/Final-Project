@@ -15,4 +15,5 @@ closeBtn.addEventListener('click', ()=>{
 
 var newURL = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname + window.location.search
 
-console.log(newURL)
+console.log(window.location.host);
+document.getElementById('footer').style.position="static";

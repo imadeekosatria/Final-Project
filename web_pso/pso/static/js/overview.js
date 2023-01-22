@@ -40,3 +40,5 @@ close_research.addEventListener('click', ()=>{
     researchMenu.classList.add('switch_display');
     submitBtn.style.bottom = '-1rem';
 });
+
+document.getElementById('footer').style.position="static";

@@ -1,5 +1,6 @@
+Title : Go-Jek Dikabarkan Terus Lanjutkan Strategi Akuisisi
 Pasca akuisisi terhadap startup manajemen dan analisis event Loket, Go - Jek dikabarkan masih terus mencari startup yang bisa “ diambil alih ”.
-Berdasarkan informasi dari tiga sumber yang berbeda, disebutkan   perusahaan yang dinakhodai Nadiem Makarim ini   masih mencari sekitar 4 - 5 perusahaan lagi yang bakal diakuisisi dalam usaha menguasai sektor on-demand.
+Berdasarkan informasi dari tiga sumber yang berbeda, disebutkan   perusahaan yang dinakhodai Nadiem Makarim ini masih mencari sekitar 4 - 5 perusahaan lagi yang bakal diakuisisi dalam usaha menguasai sektor on-demand.
 Dalam perjalanannya selama dua tahun terakhir, setidaknya Go - Jek telah mengakuisisi 4 startup teknologi dari India (kemudian menjadi basis Go - Jek Engineering India), 1 startup pembayaran (menjadi basis layanan e - money Go - Pay), dan 1 startup event (Loket).
 Akuisisi membantu mengakselerasi adopsi Go - Jek terhadap penguasaan teknologi dan kepemilikan pasar.
 Salah satu yang paling strategis adalah akuisisi terhadap pemilik lisensi e - money yang terbukti memang tidak mudah mendapatkannya.
@@ -18,6 +19,6 @@ Belum lagi sentimen nasionalisme karena dua pesaing Go - Jek berasal dari negara
 Apa jadinya jika Go - Jek nanti diakuisisi Softbank, Didi, atau bahkan Alibaba?
 Meski demikian, seandainya jadi melakukan IPO pun, rencana tersebut tidak akan dilakukan dalam waktu dekat.
 Disebutkan secepat - cepatnya langkah itu baru terlaksana di tahun 2020 mendatang.
-Dua    rencana    go public yang akan diadakan startup teknologi lokal di BEI akhir tahun ini akan menjadi test case bagaimana penerimaan publik terhadap perusahaan teknologi yang selama dikenal mengutamakan pertumbuhan ketimbang cashflow dan revenue.
+Dua rencana go public yang akan diadakan startup teknologi lokal di BEI akhir tahun ini akan menjadi test case bagaimana penerimaan publik terhadap perusahaan teknologi yang selama dikenal mengutamakan pertumbuhan ketimbang cashflow dan revenue.
 DailySocial.id adalah portal berita startup dan inovasi teknologi.
 Kamu bisa menjadi member komunitas startup dan inovasi DailySocial.id, mengunduh laporan riset dan statistik seputar teknologi secara cuma-cuma, dan mengikuti berita startup Indonesia dan gadget terbaru.

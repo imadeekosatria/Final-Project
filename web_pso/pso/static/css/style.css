@@ -158,15 +158,16 @@ section#home form > p{
 }
 
 footer {
-    /* position: absolute; */
+    position: relative;
     width: 100%;
     bottom: 0;
+    padding: 10vh 0;
 }
 
 footer img{
-    /* position: absolute; */
+    position: absolute;
     bottom: 0;
-    z-index: 1;
+    z-index: -9;
 }
 
 

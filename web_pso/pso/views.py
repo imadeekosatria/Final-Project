@@ -6,8 +6,10 @@ from pathlib import Path
 from .teks_processing import *
 from .pso import *
 from .pfnet import *
-import json, os
+import json, os, PyPDF2 
 from datetime import datetime
+from docx import Document
+
 # Create your views here.
 def index(request):
     content = {
@@ -23,8 +25,8 @@ def about(request):
         'id': 'about',}
     return render(request, 'about.html', content)
 
-def handle_uploaded_file(f):
-    with open('some/file/name.txt', 'wb+') as destination:
+def handle_uploaded_file(f, filename):
+    with open('pso/berita/'+str(filename)+'.txt', 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
 
@@ -35,8 +37,30 @@ def file_upload(request):
         # fs = FileSystemStorage()
         # filename = fs.save(myfile.name, myfile)
         # uploaded_file_url = fs.url(filename)
+        # Handle file DOC
+        if myfile.name.endswith('.doc') or myfile.name.endswith('.docx'):
+            dokumen = Document(myfile)
+            # print(dokumen.paragraphs)
+            fulltext = ""
+            for para in dokumen.paragraphs:
+                fulltext =  ' '.join(para.text.splitlines())
+                # fulltext.append(new_text)
+            # print(fulltext)
+
+        # Handle file PDF
+        elif myfile.name.endswith('.pdf'):
+            dokumen = PyPDF2.PdfReader(myfile)
+            fulltext = []
+            for page in dokumen.pages:
+                # print(page.extract_text())
+                text = page.extract_text()
+                fulltext.append(text)
+            fulltext = " ".join(fulltext)
         if not Berita.objects.filter(judul=myfile.name).exists():
-            filedb = Berita(judul=myfile.name, teks=myfile.read().decode('utf-8'), file=myfile)
+            if myfile.name.endswith('.doc') or myfile.name.endswith('.docx') or myfile.name.endswith('.pdf'):
+                filedb = Berita(judul=myfile.name, teks=fulltext, file=myfile)
+            else:
+                filedb = Berita(judul=myfile.name, teks=myfile.read().decode('utf-8'), file=myfile)
             filedb.save()
         
         
@@ -44,7 +68,9 @@ def file_upload(request):
         #     'uploaded_file_url': uploaded_file_url
         # })
         return redirect('overview/'+str(myfile.name))
-    # return render(request, 'index.html')
+    else:
+        return render(request, 'index.html')
+
 def manual(request):
     if request.method == 'POST' and request.POST.get('title'):
         filename = request.POST.get('title')
