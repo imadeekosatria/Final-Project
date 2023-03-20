@@ -7,6 +7,9 @@ Final Project for Texts Summarize using PSO algorithm
 * Sastrawi (Indonesia stemmer) => `pip install Sastrawi`
 * MySQL
 
+# MySQL Setup:
+* `pip install mysqlclient`
+
 # Download NLTK all data
 Using terminal or CMD:
 * `python` or `py`
